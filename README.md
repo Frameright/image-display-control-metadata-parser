@@ -14,7 +14,7 @@
 > [mattiasw/ExifReader](https://github.com/mattiasw/ExifReader). Many thanks to
 > [mattiasw](https://github.com/mattiasw) and other contributors!
 
-----------
+---
 
 # TSDX User Guide
 
