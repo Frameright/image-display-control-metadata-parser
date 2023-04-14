@@ -34,7 +34,7 @@
   "scripts": {
     "start": "tsdx watch",
     "build": "tsdx build",
-    "test": "tsdx test",
+    "test": "tsdx test --no-cache",
     "lint": "tsdx lint . --ignore-pattern dist && prettier --check .",
     "format": "tsdx lint . --ignore-pattern dist --fix && prettier --write .",
     "prepare": "husky install && tsdx build",
