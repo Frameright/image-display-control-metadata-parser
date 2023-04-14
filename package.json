@@ -1,7 +1,27 @@
 {
   "name": "@frameright/image-display-control-metadata-parser",
+  "description": "Image Display Control metadata parsing library",
+  "keywords": [
+    "metadata",
+    "image",
+    "image-manipulation",
+    "responsive-design",
+    "responsive-layout",
+    "responsive-images",
+    "metadata-extraction",
+    "metadata-parser",
+    "iptc-metadata",
+    "image-display-control",
+    "frameright",
+    "image-publishing"
+  ],
   "version": "0.1.0",
   "license": "MIT",
+  "author": {
+    "name": "Frameright (Coberg Ltd)",
+    "email": "hello@frameright.io",
+    "url": "https://frameright.io/"
+  },
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "files": [
@@ -31,7 +51,6 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "author": "Aurelien Lourot",
   "module": "dist/image-display-control-metadata-parser.esm.js",
   "size-limit": [
     {
