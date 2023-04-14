@@ -9,4 +9,10 @@ jobs:
       - uses: actions/checkout@v1
       - uses: andresz1/size-limit-action@v1
         with:
+          # NOTES:
+          # * automatically created, see
+          #   https://docs.github.com/en/actions/security-guides/automatic-token-authentication
+          # * used for posting a report on the pull-request.
+          # * Workflow permissions must be 'Read and write permissions' under
+          #   https://github.com/AurelienLourot/image-display-control-metadata-parser/settings/actions
           github_token: ${{ secrets.GITHUB_TOKEN }}
