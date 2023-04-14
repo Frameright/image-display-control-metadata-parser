@@ -1,4 +1,5 @@
 {
+  "name": "@frameright/image-display-control-metadata-parser",
   "version": "0.1.0",
   "license": "MIT",
   "main": "dist/index.js",
@@ -30,7 +31,6 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "image-display-control-metadata-parser",
   "author": "Aurelien Lourot",
   "module": "dist/image-display-control-metadata-parser.esm.js",
   "size-limit": [
