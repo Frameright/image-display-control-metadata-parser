@@ -1,6 +1,261 @@
-export const sum = (a: number, b: number) => {
-  if ('development' === process.env.NODE_ENV) {
-    console.log('boop');
+import ExifReader from 'exifreader';
+
+interface Vertex {
+  x: number | null;
+  y: number | null;
+}
+
+interface ImageRegion {
+  id: string;
+  names: string[];
+  shape: string;
+  types: string[];
+  roles: string[];
+  unit: string;
+  imageWidth: number;
+  imageHeight: number;
+  x: number | null;
+  y: number | null;
+  width: number | null;
+  height: number | null;
+  radius: number | null;
+  vertices: Vertex[];
+}
+
+interface Size {
+  width: number;
+  height: number;
+}
+
+// Parses the XMP metadata of an image, relevant for Image Display
+// Control, i.e. mostly the image regions, see
+// https://iptc.org/std/photometadata/specification/IPTC-PhotoMetadata#image-region
+export class Parser {
+  constructor(buffer: ArrayBuffer | SharedArrayBuffer | Buffer) {
+    this._metadata = ExifReader.load(buffer, { expanded: true });
   }
-  return a + b;
-};
+
+  // Returns XMP IDC metadata in a format similar to what this web-component
+  // expects: https://github.com/Frameright/image-display-control-web-component
+  getIDCMetadata(): ImageRegion[] {
+    const result: ImageRegion[] = [];
+
+    if (!this._metadata.xmp) {
+      return result;
+    }
+    if (!Array.isArray(this._metadata.xmp.ImageRegion.value)) {
+      return result;
+    }
+
+    const regions = this._metadata.xmp.ImageRegion.value;
+    regions.forEach((region) => {
+      result.push(this._xmpRegionToImageRegion(region));
+    });
+
+    return result;
+  }
+
+  // Returns the size of the image in pixels.
+  getSize(): Size {
+    const result = {
+      width: 0,
+      height: 0,
+    };
+
+    [
+      this._metadata.file, // JPEG-specific metadata
+      this._metadata.png, // PNG-specific metadata
+    ].every((formatSpecificMetadata) => {
+      if (formatSpecificMetadata) {
+        if (
+          formatSpecificMetadata['Image Width'] &&
+          formatSpecificMetadata['Image Height']
+        ) {
+          result.width = formatSpecificMetadata['Image Width'].value;
+          result.height = formatSpecificMetadata['Image Height'].value;
+          return false; // break
+        }
+      }
+      return true; // continue
+    });
+
+    return result;
+  }
+
+  // Converts a bag of entity or concepts to an array of strings. See
+  // https://iptc.org/std/photometadata/specification/IPTC-PhotoMetadata#entity-or-concept-structure
+  private static _xmpEntityOrConceptsToStringArray(
+    xmpEntityOrConcepts: ExifReader.XmpTag
+  ): string[] {
+    const result: string[] = [];
+
+    const bag = xmpEntityOrConcepts.value as unknown as ExifReader.XmpTag;
+    if (Array.isArray(bag)) {
+      bag.forEach((xmpEntityOrConcept) => {
+        if ('Name' in xmpEntityOrConcept) {
+          result.push(
+            ...Parser._xmpAltOrBagToStringArray(
+              xmpEntityOrConcept['Name'] as ExifReader.XmpTag
+            )
+          );
+        }
+        if ('Identifier' in xmpEntityOrConcept) {
+          result.push(
+            ...Parser._xmpAltOrBagToStringArray(
+              xmpEntityOrConcept['Identifier'] as ExifReader.XmpTag
+            )
+          );
+        }
+      });
+    }
+
+    return result;
+  }
+
+  // Converts an XMP rdf:Alt or rdf:Bag tag to an array of strings.
+  private static _xmpAltOrBagToStringArray(
+    xmpAltOrBag: ExifReader.XmpTag
+  ): string[] {
+    const result: string[] = [];
+    if (Array.isArray(xmpAltOrBag.value)) {
+      xmpAltOrBag.value.forEach((item) => {
+        if (typeof item.value === 'string') {
+          result.push(item.value);
+        }
+      });
+    }
+    return result;
+  }
+
+  private static _xmpStringToNumber(
+    xmpString: ExifReader.XmpTag
+  ): number | null {
+    if (typeof xmpString.value === 'string') {
+      return parseFloat(xmpString.value);
+    }
+    return null;
+  }
+
+  // Converts an ImageRegion XMP tag to an ImageRegion object.
+  private _xmpRegionToImageRegion(region: ExifReader.XmpTag): ImageRegion {
+    const xmpId =
+      'rId' in region ? (region['rId'] as ExifReader.XmpTag).value : '';
+    const id = typeof xmpId === 'string' ? xmpId : '';
+
+    let names: string[] = [];
+    if ('Name' in region) {
+      names = Parser._xmpAltOrBagToStringArray(
+        region['Name'] as ExifReader.XmpTag
+      );
+    }
+
+    let types: string[] = [];
+    if ('rCtype' in region) {
+      types = Parser._xmpEntityOrConceptsToStringArray(
+        region['rCtype'] as ExifReader.XmpTag
+      );
+    }
+
+    let roles: string[] = [];
+    if ('rRole' in region) {
+      roles = Parser._xmpEntityOrConceptsToStringArray(
+        region['rRole'] as ExifReader.XmpTag
+      );
+    }
+
+    let shape = '';
+    let unit = '';
+    let x: number | null = null;
+    let y: number | null = null;
+    let width: number | null = null;
+    let height: number | null = null;
+    let radius: number | null = null;
+    const vertices: Vertex[] = [];
+    if ('RegionBoundary' in region) {
+      const xmpRegionBoundary = (region['RegionBoundary'] as ExifReader.XmpTag)
+        .value as unknown as ExifReader.XmpTag;
+      if ('rbShape' in xmpRegionBoundary) {
+        const xmpShape = (xmpRegionBoundary['rbShape'] as ExifReader.XmpTag)
+          .value;
+        if (typeof xmpShape === 'string') {
+          shape = xmpShape;
+        }
+      }
+      if ('rbUnit' in xmpRegionBoundary) {
+        const xmpUnit = (xmpRegionBoundary['rbUnit'] as ExifReader.XmpTag)
+          .value;
+        if (typeof xmpUnit === 'string') {
+          unit = xmpUnit;
+        }
+      }
+      if ('rbX' in xmpRegionBoundary) {
+        x = Parser._xmpStringToNumber(
+          xmpRegionBoundary['rbX'] as ExifReader.XmpTag
+        );
+      }
+      if ('rbY' in xmpRegionBoundary) {
+        y = Parser._xmpStringToNumber(
+          xmpRegionBoundary['rbY'] as ExifReader.XmpTag
+        );
+      }
+      if ('rbW' in xmpRegionBoundary) {
+        width = Parser._xmpStringToNumber(
+          xmpRegionBoundary['rbW'] as ExifReader.XmpTag
+        );
+      }
+      if ('rbH' in xmpRegionBoundary) {
+        height = Parser._xmpStringToNumber(
+          xmpRegionBoundary['rbH'] as ExifReader.XmpTag
+        );
+      }
+      if ('rbRx' in xmpRegionBoundary) {
+        radius = Parser._xmpStringToNumber(
+          xmpRegionBoundary['rbRx'] as ExifReader.XmpTag
+        );
+      }
+      if ('rbVertices' in xmpRegionBoundary) {
+        const xmpVertices = (
+          xmpRegionBoundary['rbVertices'] as ExifReader.XmpTag
+        ).value;
+        if (Array.isArray(xmpVertices)) {
+          xmpVertices.forEach((vertex) => {
+            let vertexX: number | null = null;
+            let vertexY: number | null = null;
+            if ('rbX' in vertex) {
+              vertexX = Parser._xmpStringToNumber(
+                vertex['rbX'] as ExifReader.XmpTag
+              );
+            }
+            if ('rbY' in vertex) {
+              vertexY = Parser._xmpStringToNumber(
+                vertex['rbY'] as ExifReader.XmpTag
+              );
+            }
+            vertices.push({ x: vertexX, y: vertexY });
+          });
+        }
+      }
+    }
+
+    const size = this.getSize();
+
+    return {
+      id,
+      names,
+      shape,
+      types,
+      roles,
+      unit,
+      imageWidth: size.width,
+      imageHeight: size.height,
+      x,
+      y,
+      width,
+      height,
+      radius,
+      vertices,
+    };
+  }
+
+  private _metadata: ExifReader.ExpandedTags = {};
+}
