@@ -13,7 +13,11 @@ interface Size {
 export class Parser {
   constructor(buffer: Buffer) {
     this._buffer = buffer;
-    this._metadata = ExifReader.load(this._buffer, { expanded: true });
+    try {
+      this._metadata = ExifReader.load(this._buffer, { expanded: true });
+    } catch (e) {
+      this._metadata = {};
+    }
   }
 
   /**

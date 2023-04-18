@@ -189,4 +189,13 @@ describe('Parser', () => {
       height: 3840,
     });
   });
+
+  it('can get the size of a WebP with no metadata', async () => {
+    const buffer = await fs.readFile('test/fixtures/no-metadata.webp');
+    const parser = new Parser(buffer);
+    expect(parser.getSize()).toEqual({
+      width: 12,
+      height: 11,
+    });
+  });
 });
