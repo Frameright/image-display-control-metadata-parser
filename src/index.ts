@@ -22,10 +22,14 @@ export class Parser {
    *                    shape, e.g. 'rectangle'.
    * @param roleFilter Can be used to retrieve only regions of a specific kind
    *                   of role, e.g. 'crop'.
+   * @param essentialOnly If true, only essential region properties will be
+   *                      returned, e.g. properties like `types` and `roles`
+   *                      will be skipped.
    */
   getIDCMetadata(
     shapeFilter: ShapeFilter = 'any',
-    roleFilter: RoleFilter = 'any'
+    roleFilter: RoleFilter = 'any',
+    essentialOnly: boolean = true
   ): ImageRegion[] {
     const result: ImageRegion[] = [];
 
@@ -40,6 +44,34 @@ export class Parser {
     xmpRegions.forEach((xmpRegion) => {
       const region = this._xmpRegionToImageRegion(xmpRegion);
       if (region.matches(shapeFilter, roleFilter)) {
+        if (essentialOnly) {
+          delete region.types;
+          delete region.roles;
+
+          if (region.unit === 'relative') {
+            delete region.imageWidth;
+            delete region.imageHeight;
+          }
+
+          switch (region.shape) {
+            case 'rectangle':
+              delete region.radius;
+              delete region.vertices;
+              break;
+            case 'circle':
+              delete region.width;
+              delete region.height;
+              delete region.vertices;
+              break;
+            case 'polygon':
+              delete region.x;
+              delete region.y;
+              delete region.width;
+              delete region.height;
+              delete region.radius;
+              break;
+          }
+        }
         result.push(region);
       }
     });
@@ -127,11 +159,11 @@ export class Parser {
 
   private static _xmpStringToNumber(
     xmpString: ExifReader.XmpTag
-  ): number | null {
+  ): number | undefined {
     if (typeof xmpString.value === 'string') {
       return parseFloat(xmpString.value);
     }
-    return null;
+    return undefined;
   }
 
   // Converts an ImageRegion XMP tag to an ImageRegion object.
@@ -210,8 +242,8 @@ export class Parser {
         ).value;
         if (Array.isArray(xmpVertices)) {
           xmpVertices.forEach((vertex) => {
-            let vertexX: number | null = null;
-            let vertexY: number | null = null;
+            let vertexX: number | undefined;
+            let vertexY: number | undefined;
             if ('rbX' in vertex) {
               vertexX = Parser._xmpStringToNumber(
                 vertex['rbX'] as ExifReader.XmpTag
@@ -222,7 +254,12 @@ export class Parser {
                 vertex['rbY'] as ExifReader.XmpTag
               );
             }
-            result.vertices.push({ x: vertexX, y: vertexY });
+            if (vertexX !== undefined && vertexY !== undefined) {
+              if (!Array.isArray(result.vertices)) {
+                result.vertices = [];
+              }
+              result.vertices.push({ x: vertexX, y: vertexY });
+            }
           });
         }
       }

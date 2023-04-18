@@ -1,6 +1,6 @@
 interface Vertex {
-  x: number | null;
-  y: number | null;
+  x: number;
+  y: number;
 }
 
 export type ShapeFilter = 'any' | 'rectangle' | 'circle' | 'polygon';
@@ -17,8 +17,8 @@ export class ImageRegion {
   public id: string = '';
   public names: string[] = [];
   public shape: string = '';
-  public types: string[] = [];
-  public roles: string[] = [];
+  public types?: string[];
+  public roles?: string[];
 
   // Can be 'relative' or 'pixel', see
   // https://iptc.org/std/photometadata/specification/IPTC-PhotoMetadata#boundary-measuring-unit
@@ -26,15 +26,15 @@ export class ImageRegion {
 
   // Useful when unit is 'pixel', see
   // https://github.com/Frameright/image-display-control-web-component/blob/main/image-display-control/docs/reference/attributes.md
-  public imageWidth: number = 0;
-  public imageHeight: number = 0;
+  public imageWidth?: number;
+  public imageHeight?: number;
 
-  public x: number | null = null;
-  public y: number | null = null;
-  public width: number | null = null;
-  public height: number | null = null;
-  public radius: number | null = null;
-  public vertices: Vertex[] = [];
+  public x?: number;
+  public y?: number;
+  public width?: number;
+  public height?: number;
+  public radius?: number;
+  public vertices?: Vertex[];
 
   // See https://cv.iptc.org/newscodes/imageregionrole/
   private static readonly _CROP_XML_ROLES = [
@@ -58,13 +58,15 @@ export class ImageRegion {
     if (roleFilter === 'any') {
       return true;
     }
+
     if (roleFilter === 'crop') {
-      for (const role of this.roles) {
+      for (const role of this.roles || []) {
         if (ImageRegion._CROP_XML_ROLES.includes(role)) {
           return true;
         }
       }
     }
+
     return false;
   }
 }
