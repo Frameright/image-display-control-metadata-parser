@@ -1,4 +1,5 @@
 import ExifReader from 'exifreader';
+import sizeOf from 'image-size';
 import { ImageRegion, RoleFilter, ShapeFilter } from './ImageRegion';
 
 interface Size {
@@ -10,8 +11,9 @@ interface Size {
 // Control, i.e. mostly the image regions, see
 // https://iptc.org/std/photometadata/specification/IPTC-PhotoMetadata#image-region
 export class Parser {
-  constructor(buffer: ArrayBuffer | SharedArrayBuffer | Buffer) {
-    this._metadata = ExifReader.load(buffer, { expanded: true });
+  constructor(buffer: Buffer) {
+    this._buffer = buffer;
+    this._metadata = ExifReader.load(this._buffer, { expanded: true });
   }
 
   /**
@@ -86,30 +88,12 @@ export class Parser {
       return this._size;
     }
 
-    const result = {
-      width: 0,
-      height: 0,
+    const size = sizeOf(this._buffer);
+    this._size = {
+      width: size.width || 0,
+      height: size.height || 0,
     };
-
-    [
-      this._metadata.file, // JPEG-specific metadata
-      this._metadata.png, // PNG-specific metadata
-    ].every((formatSpecificMetadata) => {
-      if (formatSpecificMetadata) {
-        if (
-          formatSpecificMetadata['Image Width'] &&
-          formatSpecificMetadata['Image Height']
-        ) {
-          result.width = formatSpecificMetadata['Image Width'].value;
-          result.height = formatSpecificMetadata['Image Height'].value;
-          return false; // break
-        }
-      }
-      return true; // continue
-    });
-
-    this._size = result;
-    return result;
+    return this._size;
   }
 
   // Converts a bag of entity or concepts to an array of strings. See
@@ -272,6 +256,7 @@ export class Parser {
     return result;
   }
 
-  private _metadata: ExifReader.ExpandedTags = {};
+  private _buffer: Buffer;
+  private _metadata: ExifReader.ExpandedTags;
   private _size: Size | null = null;
 }

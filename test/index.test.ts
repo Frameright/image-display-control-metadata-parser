@@ -160,9 +160,7 @@ describe('Parser', () => {
     const parser = new Parser(buffer);
     expect(parser.getIDCMetadata('any', 'crop')).toEqual([]);
   });
-});
 
-describe('Parser', () => {
   it('can get the size of a JPEG', async () => {
     const buffer = await fs.readFile(
       'test/fixtures/thirdparty/IPTC-PhotometadataRef-Std2021.1.jpg'
@@ -180,6 +178,15 @@ describe('Parser', () => {
     expect(parser.getSize()).toEqual({
       width: 10,
       height: 10,
+    });
+  });
+
+  it('can get the size of a WebP', async () => {
+    const buffer = await fs.readFile('test/fixtures/thirdparty/skater.webp');
+    const parser = new Parser(buffer);
+    expect(parser.getSize()).toEqual({
+      width: 5760,
+      height: 3840,
     });
   });
 });
