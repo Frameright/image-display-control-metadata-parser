@@ -1,5 +1,5 @@
 import ExifReader from 'exifreader';
-import { ImageRegion, ShapeFilter } from './ImageRegion';
+import { ImageRegion, RoleFilter, ShapeFilter } from './ImageRegion';
 
 interface Size {
   width: number;
@@ -20,8 +20,13 @@ export class Parser {
    *
    * @param shapeFilter Can be used to retrieve only regions of a specific
    *                    shape, e.g. 'rectangle'.
+   * @param roleFilter Can be used to retrieve only regions of a specific kind
+   *                   of role, e.g. 'crop'.
    */
-  getIDCMetadata(shapeFilter: ShapeFilter = 'any'): ImageRegion[] {
+  getIDCMetadata(
+    shapeFilter: ShapeFilter = 'any',
+    roleFilter: RoleFilter = 'any'
+  ): ImageRegion[] {
     const result: ImageRegion[] = [];
 
     if (!this._metadata.xmp) {
@@ -34,7 +39,7 @@ export class Parser {
     const xmpRegions = this._metadata.xmp.ImageRegion.value;
     xmpRegions.forEach((xmpRegion) => {
       const region = this._xmpRegionToImageRegion(xmpRegion);
-      if (region.matches(shapeFilter)) {
+      if (region.matches(shapeFilter, roleFilter)) {
         result.push(region);
       }
     });

@@ -128,6 +128,14 @@ describe('Parser', () => {
       },
     ]);
   });
+
+  it('can filter cropping regions', async () => {
+    const buffer = await fs.readFile(
+      'test/fixtures/thirdparty/IPTC-PhotometadataRef-Std2021.1.jpg'
+    );
+    const parser = new Parser(buffer);
+    expect(parser.getIDCMetadata('any', 'crop')).toEqual([]);
+  });
 });
 
 describe('Parser', () => {
