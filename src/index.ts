@@ -1,26 +1,5 @@
 import ExifReader from 'exifreader';
-
-interface Vertex {
-  x: number | null;
-  y: number | null;
-}
-
-interface ImageRegion {
-  id: string;
-  names: string[];
-  shape: string;
-  types: string[];
-  roles: string[];
-  unit: string;
-  imageWidth: number;
-  imageHeight: number;
-  x: number | null;
-  y: number | null;
-  width: number | null;
-  height: number | null;
-  radius: number | null;
-  vertices: Vertex[];
-}
+import { ImageRegion, ShapeFilter } from './ImageRegion';
 
 interface Size {
   width: number;
@@ -35,9 +14,14 @@ export class Parser {
     this._metadata = ExifReader.load(buffer, { expanded: true });
   }
 
-  // Returns XMP IDC metadata in a format similar to what this web-component
-  // expects: https://github.com/Frameright/image-display-control-web-component
-  getIDCMetadata(): ImageRegion[] {
+  /**
+   * Returns XMP IDC metadata in a format similar to what this web-component
+   * expects: https://github.com/Frameright/image-display-control-web-component
+   *
+   * @param shapeFilter Can be used to retrieve only regions of a specific
+   *                    shape, e.g. 'rectangle'.
+   */
+  getIDCMetadata(shapeFilter: ShapeFilter = 'any'): ImageRegion[] {
     const result: ImageRegion[] = [];
 
     if (!this._metadata.xmp) {
@@ -47,9 +31,12 @@ export class Parser {
       return result;
     }
 
-    const regions = this._metadata.xmp.ImageRegion.value;
-    regions.forEach((region) => {
-      result.push(this._xmpRegionToImageRegion(region));
+    const xmpRegions = this._metadata.xmp.ImageRegion.value;
+    xmpRegions.forEach((xmpRegion) => {
+      const region = this._xmpRegionToImageRegion(xmpRegion);
+      if (region.matches(shapeFilter)) {
+        result.push(region);
+      }
     });
 
     return result;
@@ -138,39 +125,32 @@ export class Parser {
 
   // Converts an ImageRegion XMP tag to an ImageRegion object.
   private _xmpRegionToImageRegion(region: ExifReader.XmpTag): ImageRegion {
+    const result = new ImageRegion();
+
     const xmpId =
       'rId' in region ? (region['rId'] as ExifReader.XmpTag).value : '';
-    const id = typeof xmpId === 'string' ? xmpId : '';
+    if (typeof xmpId === 'string') {
+      result.id = xmpId;
+    }
 
-    let names: string[] = [];
     if ('Name' in region) {
-      names = Parser._xmpAltOrBagToStringArray(
+      result.names = Parser._xmpAltOrBagToStringArray(
         region['Name'] as ExifReader.XmpTag
       );
     }
 
-    let types: string[] = [];
     if ('rCtype' in region) {
-      types = Parser._xmpEntityOrConceptsToStringArray(
+      result.types = Parser._xmpEntityOrConceptsToStringArray(
         region['rCtype'] as ExifReader.XmpTag
       );
     }
 
-    let roles: string[] = [];
     if ('rRole' in region) {
-      roles = Parser._xmpEntityOrConceptsToStringArray(
+      result.roles = Parser._xmpEntityOrConceptsToStringArray(
         region['rRole'] as ExifReader.XmpTag
       );
     }
 
-    let shape = '';
-    let unit = '';
-    let x: number | null = null;
-    let y: number | null = null;
-    let width: number | null = null;
-    let height: number | null = null;
-    let radius: number | null = null;
-    const vertices: Vertex[] = [];
     if ('RegionBoundary' in region) {
       const xmpRegionBoundary = (region['RegionBoundary'] as ExifReader.XmpTag)
         .value as unknown as ExifReader.XmpTag;
@@ -178,38 +158,38 @@ export class Parser {
         const xmpShape = (xmpRegionBoundary['rbShape'] as ExifReader.XmpTag)
           .value;
         if (typeof xmpShape === 'string') {
-          shape = xmpShape;
+          result.shape = xmpShape;
         }
       }
       if ('rbUnit' in xmpRegionBoundary) {
         const xmpUnit = (xmpRegionBoundary['rbUnit'] as ExifReader.XmpTag)
           .value;
         if (typeof xmpUnit === 'string') {
-          unit = xmpUnit;
+          result.unit = xmpUnit;
         }
       }
       if ('rbX' in xmpRegionBoundary) {
-        x = Parser._xmpStringToNumber(
+        result.x = Parser._xmpStringToNumber(
           xmpRegionBoundary['rbX'] as ExifReader.XmpTag
         );
       }
       if ('rbY' in xmpRegionBoundary) {
-        y = Parser._xmpStringToNumber(
+        result.y = Parser._xmpStringToNumber(
           xmpRegionBoundary['rbY'] as ExifReader.XmpTag
         );
       }
       if ('rbW' in xmpRegionBoundary) {
-        width = Parser._xmpStringToNumber(
+        result.width = Parser._xmpStringToNumber(
           xmpRegionBoundary['rbW'] as ExifReader.XmpTag
         );
       }
       if ('rbH' in xmpRegionBoundary) {
-        height = Parser._xmpStringToNumber(
+        result.height = Parser._xmpStringToNumber(
           xmpRegionBoundary['rbH'] as ExifReader.XmpTag
         );
       }
       if ('rbRx' in xmpRegionBoundary) {
-        radius = Parser._xmpStringToNumber(
+        result.radius = Parser._xmpStringToNumber(
           xmpRegionBoundary['rbRx'] as ExifReader.XmpTag
         );
       }
@@ -231,30 +211,17 @@ export class Parser {
                 vertex['rbY'] as ExifReader.XmpTag
               );
             }
-            vertices.push({ x: vertexX, y: vertexY });
+            result.vertices.push({ x: vertexX, y: vertexY });
           });
         }
       }
     }
 
     const size = this.getSize();
+    result.imageWidth = size.width;
+    result.imageHeight = size.height;
 
-    return {
-      id,
-      names,
-      shape,
-      types,
-      roles,
-      unit,
-      imageWidth: size.width,
-      imageHeight: size.height,
-      x,
-      y,
-      width,
-      height,
-      radius,
-      vertices,
-    };
+    return result;
   }
 
   private _metadata: ExifReader.ExpandedTags = {};
