@@ -48,7 +48,12 @@ export class Parser {
   }
 
   // Returns the size of the image in pixels.
+  // Caches the result in this._size.
   getSize(): Size {
+    if (this._size) {
+      return this._size;
+    }
+
     const result = {
       width: 0,
       height: 0,
@@ -71,6 +76,7 @@ export class Parser {
       return true; // continue
     });
 
+    this._size = result;
     return result;
   }
 
@@ -230,4 +236,5 @@ export class Parser {
   }
 
   private _metadata: ExifReader.ExpandedTags = {};
+  private _size: Size | null = null;
 }
