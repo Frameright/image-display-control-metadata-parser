@@ -21,7 +21,7 @@ Image width in pixels.
 
 #### Defined in
 
-[index.ts:13](https://github.com/AurelienLourot/image-display-control-metadata-parser/blob/main/src/index.ts#L13)
+[index.ts:13](https://github.com/Frameright/image-display-control-metadata-parser/blob/main/src/index.ts#L13)
 
 ___
 
@@ -33,4 +33,4 @@ Image height in pixels.
 
 #### Defined in
 
-[index.ts:18](https://github.com/AurelienLourot/image-display-control-metadata-parser/blob/main/src/index.ts#L18)
+[index.ts:18](https://github.com/Frameright/image-display-control-metadata-parser/blob/main/src/index.ts#L18)

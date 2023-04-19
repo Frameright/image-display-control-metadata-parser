@@ -32,7 +32,7 @@ https://iptc.org/std/photometadata/specification/IPTC-PhotoMetadata#image-region
 
 #### Defined in
 
-[index.ts:30](https://github.com/AurelienLourot/image-display-control-metadata-parser/blob/main/src/index.ts#L30)
+[index.ts:30](https://github.com/Frameright/image-display-control-metadata-parser/blob/main/src/index.ts#L30)
 
 ## Methods
 
@@ -57,7 +57,7 @@ expects: https://github.com/Frameright/image-display-control-web-component
 
 #### Defined in
 
-[index.ts:52](https://github.com/AurelienLourot/image-display-control-metadata-parser/blob/main/src/index.ts#L52)
+[index.ts:52](https://github.com/Frameright/image-display-control-metadata-parser/blob/main/src/index.ts#L52)
 
 ___
 
@@ -76,7 +76,7 @@ An instance of
 
 #### Defined in
 
-[index.ts:108](https://github.com/AurelienLourot/image-display-control-metadata-parser/blob/main/src/index.ts#L108)
+[index.ts:108](https://github.com/Frameright/image-display-control-metadata-parser/blob/main/src/index.ts#L108)
 
 ___
 
@@ -96,4 +96,4 @@ Caches the result in `this._size` for future calls.
 
 #### Defined in
 
-[index.ts:117](https://github.com/AurelienLourot/image-display-control-metadata-parser/blob/main/src/index.ts#L117)
+[index.ts:117](https://github.com/Frameright/image-display-control-metadata-parser/blob/main/src/index.ts#L117)

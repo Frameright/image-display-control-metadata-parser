@@ -1,6 +1,6 @@
 [<img src="https://avatars.githubusercontent.com/u/35964478?s=200&v=4" align="right" width="64" height="64">](https://frameright.io)
 [![npm version](https://img.shields.io/npm/v/@frameright/image-display-control-metadata-parser)](https://www.npmjs.com/package/@frameright/image-display-control-metadata-parser)
-[![github actions](https://github.com/AurelienLourot/image-display-control-metadata-parser/actions/workflows/main.yml/badge.svg)](https://github.com/AurelienLourot/image-display-control-metadata-parser/actions/workflows/main.yml)
+[![github actions](https://github.com/Frameright/image-display-control-metadata-parser/actions/workflows/main.yml/badge.svg)](https://github.com/Frameright/image-display-control-metadata-parser/actions/workflows/main.yml)
 
 &nbsp;
 
@@ -99,12 +99,12 @@ console.log(parser.getIdcMetadata());
 ```
 
 This has been
-[validated](https://github.com/AurelienLourot/image-display-control-metadata-parser/blob/main/test/index.test.ts)
+[validated](https://github.com/Frameright/image-display-control-metadata-parser/blob/main/test/index.test.ts)
 with JPEG, PNG, and WebP images.
 
-&emsp; :scroll: [Reference](https://github.com/AurelienLourot/image-display-control-metadata-parser/blob/main/generated-docs/classes/Parser.md)
+&emsp; :scroll: [Reference](https://github.com/Frameright/image-display-control-metadata-parser/blob/main/generated-docs/classes/Parser.md)
 
-&emsp; :wrench: [Contributing](https://github.com/AurelienLourot/image-display-control-metadata-parser/blob/main/docs/contributing.md)
+&emsp; :wrench: [Contributing](https://github.com/Frameright/image-display-control-metadata-parser/blob/main/docs/contributing.md)
 
 ## Image Display Control metadata
 

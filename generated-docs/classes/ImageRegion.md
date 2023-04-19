@@ -46,7 +46,7 @@
 
 #### Defined in
 
-[ImageRegion.ts:33](https://github.com/AurelienLourot/image-display-control-metadata-parser/blob/main/src/ImageRegion.ts#L33)
+[ImageRegion.ts:33](https://github.com/Frameright/image-display-control-metadata-parser/blob/main/src/ImageRegion.ts#L33)
 
 ## Properties
 
@@ -58,7 +58,7 @@ Identifier for the region. Unique within the image.
 
 #### Defined in
 
-[ImageRegion.ts:43](https://github.com/AurelienLourot/image-display-control-metadata-parser/blob/main/src/ImageRegion.ts#L43)
+[ImageRegion.ts:43](https://github.com/Frameright/image-display-control-metadata-parser/blob/main/src/ImageRegion.ts#L43)
 
 ___
 
@@ -70,7 +70,7 @@ Names for the region, possibly in multiple languages.
 
 #### Defined in
 
-[ImageRegion.ts:48](https://github.com/AurelienLourot/image-display-control-metadata-parser/blob/main/src/ImageRegion.ts#L48)
+[ImageRegion.ts:48](https://github.com/Frameright/image-display-control-metadata-parser/blob/main/src/ImageRegion.ts#L48)
 
 ___
 
@@ -82,7 +82,7 @@ Region shape, can be `rectangle`, `circle` or `polygon`.
 
 #### Defined in
 
-[ImageRegion.ts:53](https://github.com/AurelienLourot/image-display-control-metadata-parser/blob/main/src/ImageRegion.ts#L53)
+[ImageRegion.ts:53](https://github.com/Frameright/image-display-control-metadata-parser/blob/main/src/ImageRegion.ts#L53)
 
 ___
 
@@ -94,7 +94,7 @@ Region types, see https://cv.iptc.org/newscodes/imageregiontype/
 
 #### Defined in
 
-[ImageRegion.ts:58](https://github.com/AurelienLourot/image-display-control-metadata-parser/blob/main/src/ImageRegion.ts#L58)
+[ImageRegion.ts:58](https://github.com/Frameright/image-display-control-metadata-parser/blob/main/src/ImageRegion.ts#L58)
 
 ___
 
@@ -106,7 +106,7 @@ Region roles, see https://cv.iptc.org/newscodes/imageregionrole/
 
 #### Defined in
 
-[ImageRegion.ts:63](https://github.com/AurelienLourot/image-display-control-metadata-parser/blob/main/src/ImageRegion.ts#L63)
+[ImageRegion.ts:63](https://github.com/Frameright/image-display-control-metadata-parser/blob/main/src/ImageRegion.ts#L63)
 
 ___
 
@@ -120,7 +120,7 @@ https://iptc.org/std/photometadata/specification/IPTC-PhotoMetadata#boundary-mea
 
 #### Defined in
 
-[ImageRegion.ts:70](https://github.com/AurelienLourot/image-display-control-metadata-parser/blob/main/src/ImageRegion.ts#L70)
+[ImageRegion.ts:70](https://github.com/Frameright/image-display-control-metadata-parser/blob/main/src/ImageRegion.ts#L70)
 
 ___
 
@@ -134,7 +134,7 @@ https://github.com/Frameright/image-display-control-web-component/blob/main/imag
 
 #### Defined in
 
-[ImageRegion.ts:77](https://github.com/AurelienLourot/image-display-control-metadata-parser/blob/main/src/ImageRegion.ts#L77)
+[ImageRegion.ts:77](https://github.com/Frameright/image-display-control-metadata-parser/blob/main/src/ImageRegion.ts#L77)
 
 ___
 
@@ -148,7 +148,7 @@ https://github.com/Frameright/image-display-control-web-component/blob/main/imag
 
 #### Defined in
 
-[ImageRegion.ts:84](https://github.com/AurelienLourot/image-display-control-metadata-parser/blob/main/src/ImageRegion.ts#L84)
+[ImageRegion.ts:84](https://github.com/Frameright/image-display-control-metadata-parser/blob/main/src/ImageRegion.ts#L84)
 
 ___
 
@@ -160,7 +160,7 @@ Coordinates of a `rectangle` or `circle` region.
 
 #### Defined in
 
-[ImageRegion.ts:89](https://github.com/AurelienLourot/image-display-control-metadata-parser/blob/main/src/ImageRegion.ts#L89)
+[ImageRegion.ts:89](https://github.com/Frameright/image-display-control-metadata-parser/blob/main/src/ImageRegion.ts#L89)
 
 ___
 
@@ -172,7 +172,7 @@ Coordinates of a `rectangle` or `circle` region.
 
 #### Defined in
 
-[ImageRegion.ts:94](https://github.com/AurelienLourot/image-display-control-metadata-parser/blob/main/src/ImageRegion.ts#L94)
+[ImageRegion.ts:94](https://github.com/Frameright/image-display-control-metadata-parser/blob/main/src/ImageRegion.ts#L94)
 
 ___
 
@@ -184,7 +184,7 @@ Width of a `rectangle` region.
 
 #### Defined in
 
-[ImageRegion.ts:99](https://github.com/AurelienLourot/image-display-control-metadata-parser/blob/main/src/ImageRegion.ts#L99)
+[ImageRegion.ts:99](https://github.com/Frameright/image-display-control-metadata-parser/blob/main/src/ImageRegion.ts#L99)
 
 ___
 
@@ -196,7 +196,7 @@ Height of a `rectangle` region.
 
 #### Defined in
 
-[ImageRegion.ts:104](https://github.com/AurelienLourot/image-display-control-metadata-parser/blob/main/src/ImageRegion.ts#L104)
+[ImageRegion.ts:104](https://github.com/Frameright/image-display-control-metadata-parser/blob/main/src/ImageRegion.ts#L104)
 
 ___
 
@@ -208,7 +208,7 @@ Radius of a `circle` region.
 
 #### Defined in
 
-[ImageRegion.ts:109](https://github.com/AurelienLourot/image-display-control-metadata-parser/blob/main/src/ImageRegion.ts#L109)
+[ImageRegion.ts:109](https://github.com/Frameright/image-display-control-metadata-parser/blob/main/src/ImageRegion.ts#L109)
 
 ___
 
@@ -220,4 +220,4 @@ Vertices/corners of a `polygon` region.
 
 #### Defined in
 
-[ImageRegion.ts:114](https://github.com/AurelienLourot/image-display-control-metadata-parser/blob/main/src/ImageRegion.ts#L114)
+[ImageRegion.ts:114](https://github.com/Frameright/image-display-control-metadata-parser/blob/main/src/ImageRegion.ts#L114)

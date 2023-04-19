@@ -30,7 +30,7 @@ only regions of the given shape will be returned.
 
 #### Defined in
 
-[ImageRegion.ts:20](https://github.com/AurelienLourot/image-display-control-metadata-parser/blob/main/src/ImageRegion.ts#L20)
+[ImageRegion.ts:20](https://github.com/Frameright/image-display-control-metadata-parser/blob/main/src/ImageRegion.ts#L20)
 
 ___
 
@@ -44,4 +44,4 @@ at https://cv.iptc.org/newscodes/imageregionrole/ will be returned.
 
 #### Defined in
 
-[ImageRegion.ts:27](https://github.com/AurelienLourot/image-display-control-metadata-parser/blob/main/src/ImageRegion.ts#L27)
+[ImageRegion.ts:27](https://github.com/Frameright/image-display-control-metadata-parser/blob/main/src/ImageRegion.ts#L27)

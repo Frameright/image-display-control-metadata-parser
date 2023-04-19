@@ -21,7 +21,7 @@ Coordinates of the vertex.
 
 #### Defined in
 
-[ImageRegion.ts:8](https://github.com/AurelienLourot/image-display-control-metadata-parser/blob/main/src/ImageRegion.ts#L8)
+[ImageRegion.ts:8](https://github.com/Frameright/image-display-control-metadata-parser/blob/main/src/ImageRegion.ts#L8)
 
 ___
 
@@ -33,4 +33,4 @@ Coordinates of the vertex.
 
 #### Defined in
 
-[ImageRegion.ts:13](https://github.com/AurelienLourot/image-display-control-metadata-parser/blob/main/src/ImageRegion.ts#L13)
+[ImageRegion.ts:13](https://github.com/Frameright/image-display-control-metadata-parser/blob/main/src/ImageRegion.ts#L13)
