@@ -30,9 +30,10 @@ export class Parser {
   constructor(buffer: Buffer) {
     this._buffer = buffer;
     try {
-      this._metadata = ExifReader.load(this._buffer, { expanded: true });
+      const metadata = ExifReader.load(this._buffer, { expanded: true });
+      this._xmpMetadata = metadata.xmp || {};
     } catch (e) {
-      this._metadata = {};
+      this._xmpMetadata = {};
     }
   }
 
@@ -55,14 +56,11 @@ export class Parser {
   ): ImageRegion[] {
     const result: ImageRegion[] = [];
 
-    if (!this._metadata.xmp) {
-      return result;
-    }
-    if (!Array.isArray(this._metadata.xmp.ImageRegion.value)) {
+    if (!Array.isArray(this._xmpMetadata.ImageRegion?.value)) {
       return result;
     }
 
-    const xmpRegions = this._metadata.xmp.ImageRegion.value;
+    const xmpRegions = this._xmpMetadata.ImageRegion.value;
     xmpRegions.forEach((xmpRegion) => {
       const region = this._xmpRegionToImageRegion(xmpRegion);
       if (region.matches(shapeFilter, roleFilter)) {
@@ -280,6 +278,6 @@ export class Parser {
   }
 
   private _buffer: Buffer;
-  private _metadata: ExifReader.ExpandedTags;
+  private _xmpMetadata: ExifReader.XmpTags;
   private _size: Size | null = null;
 }

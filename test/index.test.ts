@@ -172,8 +172,20 @@ describe('Parser', () => {
     });
   });
 
+  it("doesn't crash when no metadata in PNG", async () => {
+    const buffer = await fs.readFile('test/fixtures/no-metadata.png');
+    const parser = new Parser(buffer);
+    expect(parser.getIDCMetadata()).toEqual([]);
+  });
+
+  it("doesn't crash when no regions in PNG", async () => {
+    const buffer = await fs.readFile('test/fixtures/thirdparty/metapm.png');
+    const parser = new Parser(buffer);
+    expect(parser.getIDCMetadata()).toEqual([]);
+  });
+
   it('can get the size of a PNG', async () => {
-    const buffer = await fs.readFile('test/fixtures/no-regions.png');
+    const buffer = await fs.readFile('test/fixtures/no-metadata.png');
     const parser = new Parser(buffer);
     expect(parser.getSize()).toEqual({
       width: 10,

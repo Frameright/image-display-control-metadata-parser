@@ -6,3 +6,6 @@
   open standard
 - [`skater.webp`](skater.webp), authored by
   [Marina Ekroos](http://marinaekroos.com/)
+- `meta*`, come from
+  [Frameright/php-image-metadata-parser](https://github.com/Frameright/php-image-metadata-parser/tree/master/tests/Fixtures),
+  under MIT license
