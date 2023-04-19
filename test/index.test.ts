@@ -7,7 +7,7 @@ describe('Parser', () => {
       'test/fixtures/thirdparty/IPTC-PhotometadataRef-Std2021.1.jpg'
     );
     const parser = new Parser(buffer);
-    expect(parser.getIDCMetadata('any', 'any', false)).toEqual([
+    expect(parser.getIdcMetadata('any', 'any', false)).toEqual([
       {
         id: 'persltr2',
         names: ['Listener 1'],
@@ -91,7 +91,7 @@ describe('Parser', () => {
       'test/fixtures/thirdparty/IPTC-PhotometadataRef-Std2021.1.jpg'
     );
     const parser = new Parser(buffer);
-    expect(parser.getIDCMetadata()).toEqual([
+    expect(parser.getIdcMetadata()).toEqual([
       {
         id: 'persltr2',
         names: ['Listener 1'],
@@ -139,7 +139,7 @@ describe('Parser', () => {
       'test/fixtures/thirdparty/IPTC-PhotometadataRef-Std2021.1.jpg'
     );
     const parser = new Parser(buffer);
-    expect(parser.getIDCMetadata('rectangle')).toEqual([
+    expect(parser.getIdcMetadata('rectangle')).toEqual([
       {
         id: 'persltr2',
         names: ['Listener 1'],
@@ -158,7 +158,7 @@ describe('Parser', () => {
       'test/fixtures/thirdparty/IPTC-PhotometadataRef-Std2021.1.jpg'
     );
     const parser = new Parser(buffer);
-    expect(parser.getIDCMetadata('any', 'crop')).toEqual([]);
+    expect(parser.getIdcMetadata('any', 'crop')).toEqual([]);
   });
 
   it('can get the size of a JPEG', async () => {
@@ -172,16 +172,16 @@ describe('Parser', () => {
     });
   });
 
-  it("doesn't crash when no metadata in PNG", async () => {
+  it("getIdcMetadata() doesn't crash when no metadata in PNG", async () => {
     const buffer = await fs.readFile('test/fixtures/no-metadata.png');
     const parser = new Parser(buffer);
-    expect(parser.getIDCMetadata()).toEqual([]);
+    expect(parser.getIdcMetadata()).toEqual([]);
   });
 
-  it("doesn't crash when no regions in PNG", async () => {
+  it("getIdcMetadata() doesn't crash when no regions in PNG", async () => {
     const buffer = await fs.readFile('test/fixtures/thirdparty/metapm.png');
     const parser = new Parser(buffer);
-    expect(parser.getIDCMetadata()).toEqual([]);
+    expect(parser.getIdcMetadata()).toEqual([]);
   });
 
   it('can get the size of a PNG', async () => {
@@ -209,5 +209,25 @@ describe('Parser', () => {
       width: 12,
       height: 11,
     });
+  });
+
+  it('can get the XMP metadata of a PNG', async () => {
+    const buffer = await fs.readFile('test/fixtures/thirdparty/metapm.png');
+    const parser = new Parser(buffer);
+    expect(parser.getXmpMetadata()['PersonInImage'].description).toEqual(
+      'Persons Shown'
+    );
+  });
+
+  it("getXmpMetadata() doesn't crash when no metadata in PNG", async () => {
+    const buffer = await fs.readFile('test/fixtures/no-metadata.png');
+    const parser = new Parser(buffer);
+    expect(parser.getXmpMetadata()).toEqual({});
+  });
+
+  it('can get the XMP metadata of a WebP', async () => {
+    const buffer = await fs.readFile('test/fixtures/thirdparty/meta.webp');
+    const parser = new Parser(buffer);
+    expect(parser.getXmpMetadata()['Country'].description).toEqual('England');
   });
 });

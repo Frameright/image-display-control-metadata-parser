@@ -49,7 +49,7 @@ export class Parser {
    *                      returned, e.g. properties like `types` and `roles`
    *                      will be skipped.
    */
-  getIDCMetadata(
+  getIdcMetadata(
     shapeFilter: ShapeFilter = 'any',
     roleFilter: RoleFilter = 'any',
     essentialOnly: boolean = true
@@ -97,6 +97,16 @@ export class Parser {
     });
 
     return result;
+  }
+
+  /**
+   * Dumps all XMP metadata.
+   *
+   * @return An instance of
+   *         [ExifReader.XmpTags](https://github.com/mattiasw/ExifReader/blob/main/exif-reader.d.ts#L121)
+   */
+  getXmpMetadata(): ExifReader.XmpTags {
+    return this._xmpMetadata;
   }
 
   /**

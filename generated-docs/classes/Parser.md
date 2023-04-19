@@ -14,7 +14,8 @@ https://iptc.org/std/photometadata/specification/IPTC-PhotoMetadata#image-region
 
 ### Methods
 
-- [getIDCMetadata](Parser.md#getidcmetadata)
+- [getIdcMetadata](Parser.md#getidcmetadata)
+- [getXmpMetadata](Parser.md#getxmpmetadata)
 - [getSize](Parser.md#getsize)
 
 ## Constructors
@@ -35,9 +36,9 @@ https://iptc.org/std/photometadata/specification/IPTC-PhotoMetadata#image-region
 
 ## Methods
 
-### getIDCMetadata
+### getIdcMetadata
 
-▸ **getIDCMetadata**(`shapeFilter?`, `roleFilter?`, `essentialOnly?`): [`ImageRegion`](ImageRegion.md)[]
+▸ **getIdcMetadata**(`shapeFilter?`, `roleFilter?`, `essentialOnly?`): [`ImageRegion`](ImageRegion.md)[]
 
 Returns XMP IDC metadata in a format similar to what this web-component
 expects: https://github.com/Frameright/image-display-control-web-component
@@ -56,7 +57,26 @@ expects: https://github.com/Frameright/image-display-control-web-component
 
 #### Defined in
 
-[index.ts:51](https://github.com/AurelienLourot/image-display-control-metadata-parser/blob/main/src/index.ts#L51)
+[index.ts:52](https://github.com/AurelienLourot/image-display-control-metadata-parser/blob/main/src/index.ts#L52)
+
+___
+
+### getXmpMetadata
+
+▸ **getXmpMetadata**(): `XmpTags`
+
+Dumps all XMP metadata.
+
+#### Returns
+
+`XmpTags`
+
+An instance of
+        [ExifReader.XmpTags](https://github.com/mattiasw/ExifReader/blob/main/exif-reader.d.ts#L121)
+
+#### Defined in
+
+[index.ts:108](https://github.com/AurelienLourot/image-display-control-metadata-parser/blob/main/src/index.ts#L108)
 
 ___
 
@@ -76,4 +96,4 @@ Caches the result in `this._size` for future calls.
 
 #### Defined in
 
-[index.ts:109](https://github.com/AurelienLourot/image-display-control-metadata-parser/blob/main/src/index.ts#L109)
+[index.ts:117](https://github.com/AurelienLourot/image-display-control-metadata-parser/blob/main/src/index.ts#L117)
