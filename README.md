@@ -10,116 +10,112 @@
 
 # Image Display Control metadata parsing library
 
+An easy way to retrieve [Image Display Control](https://frameright.io) metadata
+out of images. Made with :heart: by [Frameright](https://frameright.io). Power
+to the pictures!
+
 > **NOTE**: this is a wrapper around
 > [mattiasw/ExifReader](https://github.com/mattiasw/ExifReader) and
 > [image-size](https://github.com/image-size/image-size). Many thanks to
 > [mattiasw](https://github.com/mattiasw), [netroy](https://github.com/netroy),
 > and other contributors!
 
-&emsp; :scroll: [Reference](https://github.com/AurelienLourot/image-display-control-metadata-parser/blob/main/generated-docs/classes/Parser.md)
+## Table of Contents
 
----
+<!-- toc -->
 
-# TSDX User Guide
+- [Overview](#overview)
+- [Usage](#usage)
+- [Image Display Control metadata](#image-display-control-metadata)
+- [Changelog](#changelog)
 
-Congrats! You just saved yourself hours of work by bootstrapping this project with TSDX. Let’s get you oriented with what’s here and how to use it.
+<!-- tocstop -->
 
-> This TSDX setup is meant for developing libraries (not apps!) that can be published to NPM. If you’re looking to build a Node app, you could use `ts-node-dev`, plain `ts-node`, or simple `tsc`.
+## Overview
 
-> If you’re new to TypeScript, checkout [this handy cheatsheet](https://devhints.io/typescript)
+The
+[Image Display Control web component](https://github.com/Frameright/image-display-control-web-component)
+extends the `<img>` tag with the ability to accept a list of
+image regions, and to zoom in on the best one for the current element size, thus
+achieving better results than
+[`object-fit: cover;`](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit)
+a.k.a. middle-cropping. Its syntax looks like:
 
-## Commands
+```html
+<img
+  is="image-display-control"
+  src="https://images.pexels.com/photos/3625715/pexels-photo-3625715.jpeg"
+  width="200"
+  height="200"
+  data-image-regions='[{
+    "id": "oneanimal",
+    "names": ["One animal"],
+    "shape": "rectangle",
+    "unit": "relative",
+    "x": "0.217",
+    "y": "0.708",
+    "width": "0.239",
+    "height": "0.1467"
+  }, {
+    "id": "threeanimals",
+    "names": ["Three animals"],
+    "shape": "rectangle",
+    "unit": "relative",
+    "x": "0.245",
+    "y": "0.725",
+    "width": "0.419",
+    "height": "0.121"
+  }]'
+/>
+```
 
-TSDX scaffolds your new library inside `/src`.
+Typically this list of image regions come from the metadata of the image file
+itself, is retrieved by the back-end, and is placed in the front-end's
+`<img data-image-regions="` attribute.
 
-To run TSDX, use:
+This is where this library comes into play: it allows your Node.js back-end to
+easily retrieve this metadata.
+
+## Usage
 
 ```bash
-npm start # or yarn start
+npm install @frameright/image-display-control-metadata-parser
 ```
 
-This builds to `/dist` and runs the project in watch mode so any edits you save inside `src` causes a rebuild to `/dist`.
+```jsx
+#!/usr/bin/env node
+// ./myscript.mjs
 
-To do a one-off build, use `npm run build` or `yarn build`.
+import { promises as fs } from 'fs';
 
-To run tests, use `npm test` or `yarn test`.
+// npm install @frameright/image-display-control-metadata-parser
+import Parser from '@frameright/image-display-control-metadata-parser';
 
-## Configuration
+// Get it from https://iptc.org/std/photometadata/examples/IPTC-PhotometadataRef-Std2021.1.jpg
+const buffer = await fs.readFile('IPTC-PhotometadataRef-Std2021.1.jpg');
 
-Code quality is set up for you with `prettier`, `husky`, and `lint-staged`. Adjust the respective fields in `package.json` accordingly.
-
-### Jest
-
-Jest tests are set up to run with `npm test` or `yarn test`.
-
-### Bundle Analysis
-
-[`size-limit`](https://github.com/ai/size-limit) is set up to calculate the real cost of your library with `npm run size` and visualize the bundle with `npm run analyze`.
-
-#### Setup Files
-
-This is the folder structure we set up for you:
-
-```txt
-/src
-  index.tsx       # EDIT THIS
-/test
-  blah.test.tsx   # EDIT THIS
-.gitignore
-package.json
-README.md         # EDIT THIS
-tsconfig.json
+const parser = new Parser(buffer);
+console.log(parser.getIdcMetadata());
 ```
 
-### Rollup
+This has been
+[validated](https://github.com/AurelienLourot/image-display-control-metadata-parser/blob/main/test/index.test.ts)
+with JPEG, PNG, and WebP images.
 
-TSDX uses [Rollup](https://rollupjs.org) as a bundler and generates multiple rollup configs for various module formats and build settings. See [Optimizations](#optimizations) for details.
+&emsp; :scroll: [Reference](https://github.com/AurelienLourot/image-display-control-metadata-parser/blob/main/generated-docs/classes/Parser.md)
 
-### TypeScript
+&emsp; :wrench: [Contributing](https://github.com/AurelienLourot/image-display-control-metadata-parser/blob/main/docs/contributing.md)
 
-`tsconfig.json` is set up to interpret `dom` and `esnext` types, as well as `react` for `jsx`. Adjust according to your needs.
+## Image Display Control metadata
 
-## Continuous Integration
+Nowadays an image file (e.g. JPEG, PNG) can contain this type of image regions
+in their metadata according to
+[the IPTC standard](https://iptc.org/std/photometadata/specification/IPTC-PhotoMetadata#image-region).
+Photographers, or anyone else, can use the
+[Frameright app](https://frameright.app/) to define and store image regions in
+the metadata of their pictures.
 
-### GitHub Actions
+## Changelog
 
-Two actions are added by default:
-
-- `main` which installs deps w/ cache, lints, tests, and builds on all pushes against a Node and OS matrix
-- `size` which comments cost comparison of your library on every pull request using [`size-limit`](https://github.com/ai/size-limit)
-
-## Optimizations
-
-Please see the main `tsdx` [optimizations docs](https://github.com/palmerhq/tsdx#optimizations). In particular, know that you can take advantage of development-only optimizations:
-
-```js
-// ./types/index.d.ts
-declare var __DEV__: boolean;
-
-// inside your code...
-if (__DEV__) {
-  console.log('foo');
-}
-```
-
-You can also choose to install and use [invariant](https://github.com/palmerhq/tsdx#invariant) and [warning](https://github.com/palmerhq/tsdx#warning) functions.
-
-## Module Formats
-
-CJS, ESModules, and UMD module formats are supported.
-
-The appropriate paths are configured in `package.json` and `dist/index.js` accordingly. Please report if any issues are found.
-
-## Named Exports
-
-Per Palmer Group guidelines, [always use named exports.](https://github.com/palmerhq/typescript#exports) Code split inside your React app instead of your React library.
-
-## Including Styles
-
-There are many ways to ship styles, including with CSS-in-JS. TSDX has no opinion on this, configure how you like.
-
-For vanilla CSS, you can include it at the root directory and add it to the `files` section in your `package.json`, so that it can be imported separately by your users and run through their bundler's loader.
-
-## Publishing to NPM
-
-We recommend using [np](https://github.com/sindresorhus/np).
+**0.1.0** (2023-04-19):
+  * Initial version.
