@@ -12,7 +12,7 @@ jobs:
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Use Node ${{ matrix.node }}
         uses: actions/setup-node@v1
@@ -30,3 +30,28 @@ jobs:
 
       - name: Build
         run: npm build
+
+      - name: Pack
+        run: npm pack
+
+      - name: Upload
+        uses: actions/upload-artifact@v3
+        with:
+          name: image-display-control-metadata-parser
+          path: frameright-image-display-control-metadata-parser-*.tgz
+          if-no-files-found: error
+
+  spellchecker:
+    name: Spellchecker
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Install deps
+        run: npm install
+
+      - name: Spellchecker
+        run: npm run spellcheck
