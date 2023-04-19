@@ -78,10 +78,6 @@ easily retrieve this metadata.
 
 ## Usage
 
-```bash
-npm install @frameright/image-display-control-metadata-parser
-```
-
 ```jsx
 #!/usr/bin/env node
 // ./myscript.mjs
