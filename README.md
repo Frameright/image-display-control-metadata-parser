@@ -11,8 +11,12 @@
 # Image Display Control metadata parsing library
 
 > **NOTE**: this is a wrapper around
-> [mattiasw/ExifReader](https://github.com/mattiasw/ExifReader). Many thanks to
-> [mattiasw](https://github.com/mattiasw) and other contributors!
+> [mattiasw/ExifReader](https://github.com/mattiasw/ExifReader) and
+> [image-size](https://github.com/image-size/image-size). Many thanks to
+> [mattiasw](https://github.com/mattiasw), [netroy](https://github.com/netroy),
+> and other contributors!
+
+&emsp; :scroll: [Reference](https://github.com/AurelienLourot/image-display-control-metadata-parser/blob/main/generated-docs/classes/Parser.md)
 
 ---
 

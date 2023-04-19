@@ -1,16 +1,32 @@
 import ExifReader from 'exifreader';
 import sizeOf from 'image-size';
-import { ImageRegion, RoleFilter, ShapeFilter } from './ImageRegion';
+import { ImageRegion, RoleFilter, ShapeFilter, Vertex } from './ImageRegion';
+export { ImageRegion, RoleFilter, ShapeFilter, Vertex };
 
-interface Size {
+/**
+ * Size of an image in pixels.
+ */
+export interface Size {
+  /**
+   * Image width in pixels.
+   */
   width: number;
+
+  /**
+   * Image height in pixels.
+   */
   height: number;
 }
 
-// Parses the XMP metadata of an image, relevant for Image Display
-// Control, i.e. mostly the image regions, see
-// https://iptc.org/std/photometadata/specification/IPTC-PhotoMetadata#image-region
+/**
+ * Parses the XMP metadata of an image, relevant for Image Display Control, i.e.
+ * mostly the image regions, see
+ * https://iptc.org/std/photometadata/specification/IPTC-PhotoMetadata#image-region
+ */
 export class Parser {
+  /**
+   * @param buffer The image file content.
+   */
   constructor(buffer: Buffer) {
     this._buffer = buffer;
     try {
@@ -85,8 +101,11 @@ export class Parser {
     return result;
   }
 
-  // Returns the size of the image in pixels.
-  // Caches the result in this._size.
+  /**
+   * Returns the size of the image in pixels.
+   *
+   * @note Caches the result in `this._size` for future calls.
+   */
   getSize(): Size {
     if (this._size) {
       return this._size;

@@ -1,0 +1,11 @@
+{
+  "plugin": ["typedoc-plugin-markdown"],
+  "entryPoints": ["./src/index.ts"],
+  "out": "generated-docs/",
+  "readme": "none",
+  "sort": ["source-order"],
+  "excludePrivate": true,
+  "excludeNotDocumented": true,
+  "excludeNotDocumentedKinds": ["Constructor", "ConstructorSignature"],
+  "gitRevision": "main"
+}
