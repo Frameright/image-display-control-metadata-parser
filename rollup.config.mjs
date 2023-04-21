@@ -10,6 +10,7 @@ import resolve from '@rollup/plugin-node-resolve';
 import { terser } from 'rollup-plugin-terser';
 import summary from 'rollup-plugin-summary';
 import commonjs from '@rollup/plugin-commonjs';
+import nodePolyfills from 'rollup-plugin-polyfill-node';
 
 export default {
   plugins: [
@@ -30,9 +31,8 @@ export default {
       patterns: [],
     }),
     // See https://stackoverflow.com/questions/71698891/rollup-js-can-not-detect-default-exports-when-trying-to-build-component-library
-    commonjs({
-      ignore: ['fs', 'path', 'events'],
-    }),
+    commonjs(),
+    nodePolyfills(),
   ],
   input: './standalone-entrypoint.js',
   output: {
