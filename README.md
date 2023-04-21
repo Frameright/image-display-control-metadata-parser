@@ -85,7 +85,7 @@ easily retrieve this metadata.
 import { promises as fs } from 'fs';
 
 // npm install @frameright/image-display-control-metadata-parser
-import Parser from '@frameright/image-display-control-metadata-parser';
+import { Parser } from '@frameright/image-display-control-metadata-parser';
 
 // Get it from https://iptc.org/std/photometadata/examples/IPTC-PhotometadataRef-Std2021.1.jpg
 const buffer = await fs.readFile('IPTC-PhotometadataRef-Std2021.1.jpg');
