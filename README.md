@@ -113,5 +113,9 @@ the metadata of their pictures.
 
 ## Changelog
 
+**1.0.0** (2023-04-21):
+  * Build `image-display-control-metadata-parser-standalone.min.js` to be served
+    by a CDN and used in the browser.
+
 **0.1.0** (2023-04-19):
   * Initial version.
