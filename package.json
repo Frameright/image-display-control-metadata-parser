@@ -15,7 +15,7 @@
     "frameright",
     "image-publishing"
   ],
-  "version": "1.0.1",
+  "version": "1.0.2",
   "license": "MIT",
   "author": {
     "name": "Frameright (Coberg Ltd)",
@@ -81,6 +81,7 @@
     "typescript": "^4.1.6"
   },
   "dependencies": {
+    "buffer": "^6.0.3",
     "exifreader": "^4.12.0",
     "image-size": "^1.0.2"
   }

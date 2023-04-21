@@ -113,6 +113,9 @@ the metadata of their pictures.
 
 ## Changelog
 
+**1.0.2** (2023-04-21):
+  * Add missing `Buffer` class to the browser build.
+
 **1.0.1** (2023-04-21):
   * Remove dangling imports to Node.js built-in modules (e.g. `fs`) from the
     browser build.
