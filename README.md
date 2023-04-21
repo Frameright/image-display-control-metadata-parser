@@ -113,6 +113,10 @@ the metadata of their pictures.
 
 ## Changelog
 
+**1.0.1** (2023-04-21):
+  * Remove dangling imports to Node.js built-in modules (e.g. `fs`) from the
+    browser build.
+
 **1.0.0** (2023-04-21):
   * Build `image-display-control-metadata-parser-standalone.min.js` to be served
     by a CDN and used in the browser.

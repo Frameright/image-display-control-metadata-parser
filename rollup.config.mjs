@@ -30,7 +30,9 @@ export default {
       patterns: [],
     }),
     // See https://stackoverflow.com/questions/71698891/rollup-js-can-not-detect-default-exports-when-trying-to-build-component-library
-    commonjs(),
+    commonjs({
+      ignore: ['fs', 'path', 'events'],
+    }),
   ],
   input: './standalone-entrypoint.js',
   output: {
