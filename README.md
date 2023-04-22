@@ -26,6 +26,8 @@ to the pictures!
 
 - [Overview](#overview)
 - [Usage](#usage)
+  * [In a Node.js back-end](#in-a-nodejs-back-end)
+  * [Directly in a browser](#directly-in-a-browser)
 - [Image Display Control metadata](#image-display-control-metadata)
 - [Changelog](#changelog)
 
@@ -78,6 +80,8 @@ easily retrieve this metadata.
 
 ## Usage
 
+### In a Node.js back-end
+
 ```jsx
 #!/usr/bin/env node
 // ./myscript.mjs
@@ -102,6 +106,39 @@ with JPEG, PNG, and WebP images.
 
 &emsp; :wrench: [Contributing](https://github.com/Frameright/image-display-control-metadata-parser/blob/main/docs/contributing.md)
 
+### Directly in a browser
+
+For testing purposes, you can use this library directly in the browser:
+
+```html
+<html>
+  <body onload="documentLoaded()">
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/@frameright/image-display-control-metadata-parser@1.0.3/dist/image-display-control-metadata-parser-standalone.min.js"
+    ></script>
+
+    <script type="text/javascript">
+      async function documentLoaded() {
+        const image = await fetch(
+          'https://iptc.org/std/photometadata/examples/IPTC-PhotometadataRef-Std2021.1.jpg'
+        );
+        const arrayBuffer = await image.arrayBuffer();
+        const buffer = Buffer.Buffer.from(arrayBuffer);
+        const parser = new ImageDisplayControl.Parser(buffer);
+        const regions = parser.getIdcMetadata();
+        console.log(JSON.stringify(regions, null, 2 /*indent*/));
+      }
+    </script>
+  </body>
+</html>
+```
+
+The parsed metadata can then directly be fed to the
+[Image Display Control web component](https://github.com/Frameright/image-display-control-web-component).
+
+&emsp; :sparkles: [Live mobile demo](https://webc.frameright.io)
+
 ## Image Display Control metadata
 
 Nowadays an image file (e.g. JPEG, PNG) can contain this type of image regions
@@ -112,6 +149,9 @@ Photographers, or anyone else, can use the
 the metadata of their pictures.
 
 ## Changelog
+
+**1.0.3** (2023-04-22):
+  * Document how to use the browser build.
 
 **1.0.2** (2023-04-21):
   * Add missing `Buffer` class to the browser build.
