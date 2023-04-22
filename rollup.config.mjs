@@ -7,7 +7,7 @@
 // Import rollup plugins
 import { copy } from '@web/rollup-plugin-copy';
 import resolve from '@rollup/plugin-node-resolve';
-import { terser } from 'rollup-plugin-terser';
+import terser from '@rollup/plugin-terser';
 import summary from 'rollup-plugin-summary';
 import commonjs from '@rollup/plugin-commonjs';
 import nodePolyfills from 'rollup-plugin-polyfill-node';
