@@ -78,6 +78,9 @@ itself, is retrieved by the back-end, and is placed in the front-end's
 This is where this library comes into play: it allows your Node.js back-end to
 easily retrieve this metadata.
 
+> **NOTE**: a PHP equivalent of this library is available
+> [here](https://github.com/Frameright/php-image-metadata-parser).
+
 ## Usage
 
 ### In a Node.js back-end
