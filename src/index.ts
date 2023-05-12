@@ -137,21 +137,43 @@ export class Parser {
     const bag = xmpEntityOrConcepts.value as unknown as ExifReader.XmpTag;
     if (Array.isArray(bag)) {
       bag.forEach((xmpEntityOrConcept) => {
-        if ('Name' in xmpEntityOrConcept) {
-          result.push(
-            ...Parser._xmpAltOrBagToStringArray(
-              xmpEntityOrConcept['Name'] as ExifReader.XmpTag
-            )
-          );
-        }
-        if ('Identifier' in xmpEntityOrConcept) {
-          result.push(
-            ...Parser._xmpAltOrBagToStringArray(
-              xmpEntityOrConcept['Identifier'] as ExifReader.XmpTag
-            )
-          );
-        }
+        result.push(
+          ...Parser._xmpEntityOrConceptToStringArray(xmpEntityOrConcept)
+        );
       });
+    } else if ('Bag' in bag) {
+      // happens when there is only one element in the bag
+
+      result.push(
+        ...Parser._xmpEntityOrConceptToStringArray(
+          (bag['Bag'] as ExifReader.XmpTag).value as ExifReader.XmpTags
+        )
+      );
+    }
+
+    return result;
+  }
+
+  // Converts an entity or concept to an array of strings. See
+  // https://iptc.org/std/photometadata/specification/IPTC-PhotoMetadata#entity-or-concept-structure
+  private static _xmpEntityOrConceptToStringArray(
+    xmpEntityOrConcept: ExifReader.XmpTags
+  ): string[] {
+    const result: string[] = [];
+
+    if ('Name' in xmpEntityOrConcept) {
+      result.push(
+        ...Parser._xmpAltOrBagToStringArray(
+          xmpEntityOrConcept['Name'] as ExifReader.XmpTag
+        )
+      );
+    }
+    if ('Identifier' in xmpEntityOrConcept) {
+      result.push(
+        ...Parser._xmpAltOrBagToStringArray(
+          xmpEntityOrConcept['Identifier'] as ExifReader.XmpTag
+        )
+      );
     }
 
     return result;

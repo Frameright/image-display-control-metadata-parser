@@ -4,6 +4,11 @@
 
 ## Table of contents
 
+### Classes
+
+- [ImageRegion](classes/ImageRegion.md)
+- [Parser](classes/Parser.md)
+
 ### Interfaces
 
 - [Vertex](interfaces/Vertex.md)
@@ -13,11 +18,6 @@
 
 - [ShapeFilter](README.md#shapefilter)
 - [RoleFilter](README.md#rolefilter)
-
-### Classes
-
-- [ImageRegion](classes/ImageRegion.md)
-- [Parser](classes/Parser.md)
 
 ## Type Aliases
 

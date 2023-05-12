@@ -118,7 +118,7 @@ For testing purposes, you can use this library directly in the browser:
   <body onload="documentLoaded()">
     <script
       type="module"
-      src="https://cdn.jsdelivr.net/npm/@frameright/image-display-control-metadata-parser@1.0.3/dist/image-display-control-metadata-parser-standalone.min.js"
+      src="https://cdn.jsdelivr.net/npm/@frameright/image-display-control-metadata-parser@1.0.4/dist/image-display-control-metadata-parser-standalone.min.js"
     ></script>
 
     <script type="text/javascript">
@@ -152,6 +152,9 @@ Photographers, or anyone else, can use the
 the metadata of their pictures.
 
 ## Changelog
+
+**1.0.4** (2023-05-12):
+  * Fixed parsing bug for image regions having only one role.
 
 **1.0.3** (2023-04-22):
   * Document how to use the browser build.

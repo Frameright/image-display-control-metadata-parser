@@ -153,12 +153,70 @@ describe('Parser', () => {
     ]);
   });
 
+  it('can find roles when only one role', async () => {
+    const buffer = await fs.readFile('test/fixtures/thirdparty/skater.jpg');
+    const parser = new Parser(buffer);
+    expect(parser.getIdcMetadata('any', 'any', false)).toEqual([
+      {
+        id: 'crop-e5cb8e64-b304-45fa-b56f-11fad65dac2b',
+        names: [],
+        shape: 'rectangle',
+        roles: ['http://cv.iptc.org/newscodes/imageregionrole/cropping'],
+        unit: 'relative',
+        imageWidth: 1500,
+        imageHeight: 1000,
+        x: 0.414,
+        y: 0.273,
+        width: 0.156,
+        height: 0.234,
+      },
+      {
+        id: 'crop-e93caf0a-227b-44c4-a7e6-d9b949f76163',
+        names: [],
+        shape: 'rectangle',
+        roles: ['http://cv.iptc.org/newscodes/imageregionrole/cropping'],
+        unit: 'relative',
+        imageWidth: 1500,
+        imageHeight: 1000,
+        x: 0.416,
+        y: 0.232,
+        width: 0.584,
+        height: 0.329,
+      },
+      {
+        id: 'crop-e7c9cd32-8c28-4a4a-8be9-b6de3bded589',
+        names: [],
+        shape: 'rectangle',
+        roles: ['http://cv.iptc.org/newscodes/imageregionrole/cropping'],
+        unit: 'relative',
+        imageWidth: 1500,
+        imageHeight: 1000,
+        x: 0.4066666666666667,
+        y: 0.199,
+        width: 0.2,
+        height: 0.801,
+      },
+    ]);
+  });
+
   it('can filter cropping regions', async () => {
-    const buffer = await fs.readFile(
+    const bufferWithoutCroppingRegions = await fs.readFile(
       'test/fixtures/thirdparty/IPTC-PhotometadataRef-Std2021.1.jpg'
     );
-    const parser = new Parser(buffer);
-    expect(parser.getIdcMetadata('any', 'crop')).toEqual([]);
+    const parserWithoutCroppingRegions = new Parser(
+      bufferWithoutCroppingRegions
+    );
+    expect(parserWithoutCroppingRegions.getIdcMetadata('any', 'crop')).toEqual(
+      []
+    );
+
+    const bufferWithCroppingRegions = await fs.readFile(
+      'test/fixtures/thirdparty/skater.jpg'
+    );
+    const parserWithCroppingRegions = new Parser(bufferWithCroppingRegions);
+    expect(
+      parserWithCroppingRegions.getIdcMetadata('any', 'crop').length
+    ).toEqual(3);
   });
 
   it('can get the size of a JPEG', async () => {
@@ -194,7 +252,9 @@ describe('Parser', () => {
   });
 
   it('can get the size of a WebP', async () => {
-    const buffer = await fs.readFile('test/fixtures/thirdparty/skater.webp');
+    const buffer = await fs.readFile(
+      'test/fixtures/thirdparty/skater-no-regions.webp'
+    );
     const parser = new Parser(buffer);
     expect(parser.getSize()).toEqual({
       width: 5760,

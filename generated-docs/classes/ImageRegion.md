@@ -4,10 +4,6 @@
 
 ## Table of contents
 
-### Methods
-
-- [matches](ImageRegion.md#matches)
-
 ### Properties
 
 - [id](ImageRegion.md#id)
@@ -25,28 +21,9 @@
 - [radius](ImageRegion.md#radius)
 - [vertices](ImageRegion.md#vertices)
 
-## Methods
+### Methods
 
-### matches
-
-▸ **matches**(`shapeFilter`, `roleFilter`): `boolean`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `shapeFilter` | [`ShapeFilter`](../README.md#shapefilter) |
-| `roleFilter` | [`RoleFilter`](../README.md#rolefilter) |
-
-#### Returns
-
-`boolean`
-
-`true` if the region matches the given shape and role filters.
-
-#### Defined in
-
-[ImageRegion.ts:33](https://github.com/Frameright/image-display-control-metadata-parser/blob/main/src/ImageRegion.ts#L33)
+- [matches](ImageRegion.md#matches)
 
 ## Properties
 
@@ -221,3 +198,26 @@ Vertices/corners of a `polygon` region.
 #### Defined in
 
 [ImageRegion.ts:114](https://github.com/Frameright/image-display-control-metadata-parser/blob/main/src/ImageRegion.ts#L114)
+
+## Methods
+
+### matches
+
+▸ **matches**(`shapeFilter`, `roleFilter`): `boolean`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `shapeFilter` | [`ShapeFilter`](../README.md#shapefilter) |
+| `roleFilter` | [`RoleFilter`](../README.md#rolefilter) |
+
+#### Returns
+
+`boolean`
+
+`true` if the region matches the given shape and role filters.
+
+#### Defined in
+
+[ImageRegion.ts:33](https://github.com/Frameright/image-display-control-metadata-parser/blob/main/src/ImageRegion.ts#L33)
