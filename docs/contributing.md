@@ -38,7 +38,7 @@ npm run format  # fix errors
 ### Running the unit tests
 
 Pull and run [Jest](https://jestjs.io/) with:
-  
+
 ```bash
 npm install
 npm run test

@@ -78,8 +78,12 @@ itself, is retrieved by the back-end, and is placed in the front-end's
 This is where this library comes into play: it allows your Node.js back-end to
 easily retrieve this metadata.
 
-> **NOTE**: a PHP equivalent of this library is available
-> [here](https://github.com/Frameright/php-image-metadata-parser).
+> **NOTES**:
+>
+> * A React component leveraging this library is available
+>   [here](https://github.com/Frameright/react-image-display-control).
+> * A PHP equivalent of this library is available
+>   [here](https://github.com/Frameright/php-image-metadata-parser).
 
 ## Usage
 
@@ -104,6 +108,8 @@ console.log(parser.getIdcMetadata());
 This has been
 [validated](https://github.com/Frameright/image-display-control-metadata-parser/blob/main/test/index.test.ts)
 with JPEG, PNG, and WebP images.
+
+&emsp; :memo: [Tutorial](https://www.frameright.io/post/metadata-in-node-js)
 
 &emsp; :scroll: [Reference](https://github.com/Frameright/image-display-control-metadata-parser/blob/main/generated-docs/classes/Parser.md)
 
