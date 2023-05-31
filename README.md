@@ -146,6 +146,9 @@ For testing purposes, you can use this library directly in the browser:
 The parsed metadata can then directly be fed to the
 [Image Display Control web component](https://github.com/Frameright/image-display-control-web-component).
 
+[This React component](https://github.com/Frameright/react-image-display-control/blob/main/src/index.tsx)
+is an example of doing that.
+
 &emsp; :sparkles: [Live mobile demo](https://webc.frameright.io)
 
 ## Image Display Control metadata
