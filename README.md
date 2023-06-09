@@ -14,6 +14,8 @@ An easy way to retrieve [Image Display Control](https://frameright.io) metadata
 out of images. Made with :heart: by [Frameright](https://frameright.io). Power
 to the pictures!
 
+&emsp; :bulb: [GitHub Discussions](https://github.com/Frameright/image-display-control-web-component/discussions)
+
 > **NOTE**: this is a wrapper around
 > [mattiasw/ExifReader](https://github.com/mattiasw/ExifReader) and
 > [image-size](https://github.com/image-size/image-size). Many thanks to
@@ -114,6 +116,8 @@ with JPEG, PNG, and WebP images.
 &emsp; :scroll: [Reference](https://github.com/Frameright/image-display-control-metadata-parser/blob/main/generated-docs/classes/Parser.md)
 
 &emsp; :wrench: [Contributing](https://github.com/Frameright/image-display-control-metadata-parser/blob/main/docs/contributing.md)
+
+&emsp; :bulb: [GitHub Discussions](https://github.com/Frameright/image-display-control-web-component/discussions)
 
 ### Directly in a browser
 
