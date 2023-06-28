@@ -4,9 +4,16 @@
 
 &nbsp;
 
-<!-- Note: make sure all URLs in this document are absolute, and not relative
-     within GitHub, as we are publishing this file to NPM and want URLs to
-     remain valid there. -->
+<!--
+WARNINGS:
+* Bits of information here are duplicated in several places:
+    * https://docs.frameright.io/javascript
+    * https://github.com/Frameright/image-display-control-metadata-parser
+  Make sure to keep them in sync.
+* Make sure all URLs in this document are absolute, and not relative within
+  GitHub, as we are publishing this file to NPM and want URLs to remain valid
+  there.
+-->
 
 # Image Display Control metadata parsing library
 
@@ -114,9 +121,9 @@ with JPEG, PNG, and WebP images.
 
 &emsp; :scroll: [Reference](https://github.com/Frameright/image-display-control-metadata-parser/blob/main/generated-docs/classes/Parser.md)
 
-&emsp; :wrench: [Contributing](https://github.com/Frameright/image-display-control-metadata-parser/blob/main/docs/contributing.md)
+&emsp; :wrench: [Contributing](https://docs.frameright.io/javascript/contributing)
 
-&emsp; 📝 [Changelog](https://github.com/Frameright/image-display-control-metadata-parser/blob/main/docs/changelog.md)
+&emsp; 📝 [Changelog](https://docs.frameright.io/javascript/contributing)
 
 &emsp; :bulb: [GitHub Discussions](https://github.com/Frameright/image-display-control-web-component/discussions)
 
@@ -129,7 +136,7 @@ For testing purposes, you can use this library directly in the browser:
   <body onload="documentLoaded()">
     <script
       type="module"
-      src="https://cdn.jsdelivr.net/npm/@frameright/image-display-control-metadata-parser@1.1.0/dist/image-display-control-metadata-parser-standalone.min.js"
+      src="https://cdn.jsdelivr.net/npm/@frameright/image-display-control-metadata-parser@1.1.1/dist/image-display-control-metadata-parser-standalone.min.js"
     ></script>
 
     <script type="text/javascript">

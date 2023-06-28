@@ -72,14 +72,14 @@ export class ImageRegion {
   /**
    * Original/full image width. Reference width to be used as a base for `x`,
    * `width`, `radius` and `vertices/x` when `unit` is `pixel`. See
-   * https://github.com/Frameright/image-display-control-web-component/blob/main/image-display-control/docs/reference/attributes.md
+   * https://docs.frameright.io/web-component/attribute-ref
    */
   public imageWidth?: number;
 
   /**
    * Original/full image width. Reference width to be used as a base for `y`,
    * `height` and `vertices/y` when `unit` is `pixel`. See
-   * https://github.com/Frameright/image-display-control-web-component/blob/main/image-display-control/docs/reference/attributes.md
+   * https://docs.frameright.io/web-component/attribute-ref
    */
   public imageHeight?: number;
 
