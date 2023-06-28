@@ -80,7 +80,7 @@ Also update the examples in the documentation to use the new version number in
 ### Changelog
 
 Describe the changes made compared to the last released version in the
-[changelog](README.md). Browse the git history to make sure nothing has been
+[changelog](changelog.md). Browse the git history to make sure nothing has been
 left out.
 
 ### Update `package-lock.json`
