@@ -163,6 +163,8 @@ is an example of doing that.
 
 &emsp; :sparkles: [Live mobile demo](https://webc.frameright.io)
 
+&emsp; 💻 [CodeSandbox](https://codesandbox.io/s/image-display-control-web-component-6hzmq5)
+
 ## Image Display Control metadata
 
 Nowadays an image file (e.g. JPEG, PNG) can contain this type of image regions
