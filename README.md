@@ -171,5 +171,5 @@ Nowadays an image file (e.g. JPEG, PNG) can contain this type of image regions
 in their metadata according to
 [the IPTC standard](https://iptc.org/std/photometadata/specification/IPTC-PhotoMetadata#image-region).
 Photographers, or anyone else, can use the
-[Frameright app](https://frameright.app/) to define and store image regions in
+[Frameright webapp](https://frameright.app/) to define and store image regions in
 the metadata of their pictures.
