@@ -17,6 +17,8 @@ WARNINGS:
 
 # Image Display Control metadata parsing library
 
+> **➡️ See this document rendered at [docs.frameright.io/javascript](https://docs.frameright.io/javascript)**
+
 An easy way to retrieve [Image Display Control](https://frameright.io) metadata
 out of images. Made with :heart: by [Frameright](https://frameright.io). Power
 to the pictures!
