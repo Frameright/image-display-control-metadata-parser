@@ -23,6 +23,8 @@ An easy way to retrieve [Image Display Control](https://frameright.io) metadata
 out of images. Made with :heart: by [Frameright](https://frameright.io). Power
 to the pictures!
 
+&emsp; :sparkles: [Live demo](https://webc.frameright.io)
+
 &emsp; :bulb: [GitHub Discussions](https://github.com/Frameright/image-display-control-web-component/discussions)
 
 > **NOTE**: this is a wrapper around
@@ -163,7 +165,7 @@ The parsed metadata can then directly be fed to the
 [This React component](https://github.com/Frameright/react-image-display-control/blob/main/src/index.tsx)
 is an example of doing that.
 
-&emsp; :sparkles: [Live mobile demo](https://webc.frameright.io)
+&emsp; :sparkles: [Live demo](https://webc.frameright.io)
 
 &emsp; 💻 [CodeSandbox](https://codesandbox.io/s/image-display-control-web-component-6hzmq5)
 
