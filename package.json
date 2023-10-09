@@ -61,7 +61,7 @@
     "husky": "^8.0.3",
     "markdown-toc": "^1.2.0",
     "prettier": "^3.0.0",
-    "rollup": "^3.20.7",
+    "rollup": "^4.0.2",
     "rollup-plugin-polyfill-node": "^0.12.0",
     "rollup-plugin-summary": "^2.0.0",
     "tsdx": "^0.14.1",
