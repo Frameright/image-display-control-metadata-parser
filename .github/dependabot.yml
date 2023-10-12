@@ -12,8 +12,8 @@ updates:
     ignore:
       # We're stuck on rollup 3 until
       # https://github.com/FredKSchott/rollup-plugin-polyfill-node/pull/77 lands
-      - dependency-name: "rollup"
-        update-types: ["version-update:semver-major"]
+      - dependency-name: 'rollup'
+        update-types: ['version-update:semver-major']
 
     # Do not get one pull request per version bump. Instead get one pull request
     # bumping several dependency versions at once:
