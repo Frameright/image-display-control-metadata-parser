@@ -22,13 +22,17 @@ https://iptc.org/std/photometadata/specification/IPTC-PhotoMetadata#image-region
 
 ### constructor
 
-• **new Parser**(`buffer`)
+• **new Parser**(`buffer`): [`Parser`](Parser.md)
 
 #### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `buffer` | `Buffer` | The image file content. |
+
+#### Returns
+
+[`Parser`](Parser.md)
 
 #### Defined in
 
@@ -86,13 +90,13 @@ ___
 
 Returns the size of the image in pixels.
 
-**`Note`**
-
-Caches the result in `this._size` for future calls.
-
 #### Returns
 
 [`Size`](../interfaces/Size.md)
+
+**`Note`**
+
+Caches the result in `this._size` for future calls.
 
 #### Defined in
 
