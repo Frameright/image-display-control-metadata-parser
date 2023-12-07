@@ -20,6 +20,8 @@
 - [height](ImageRegion.md#height)
 - [radius](ImageRegion.md#radius)
 - [vertices](ImageRegion.md#vertices)
+- [idcRegionDefinitionId](ImageRegion.md#idcregiondefinitionid)
+- [idcRegionDefinitionName](ImageRegion.md#idcregiondefinitionname)
 
 ### Methods
 
@@ -198,6 +200,30 @@ Vertices/corners of a `polygon` region.
 #### Defined in
 
 [ImageRegion.ts:114](https://github.com/Frameright/image-display-control-metadata-parser/blob/main/src/ImageRegion.ts#L114)
+
+___
+
+### idcRegionDefinitionId
+
+• `Optional` **idcRegionDefinitionId**: `string`
+
+Identifier for the region definition.
+
+#### Defined in
+
+[ImageRegion.ts:119](https://github.com/Frameright/image-display-control-metadata-parser/blob/main/src/ImageRegion.ts#L119)
+
+___
+
+### idcRegionDefinitionName
+
+• `Optional` **idcRegionDefinitionName**: `string`
+
+Name for the region definition.
+
+#### Defined in
+
+[ImageRegion.ts:124](https://github.com/Frameright/image-display-control-metadata-parser/blob/main/src/ImageRegion.ts#L124)
 
 ## Methods
 
