@@ -140,7 +140,7 @@ For testing purposes, you can use this library directly in the browser:
   <body onload="documentLoaded()">
     <script
       type="module"
-      src="https://cdn.jsdelivr.net/npm/@frameright/image-display-control-metadata-parser@1.1.1/dist/image-display-control-metadata-parser-standalone.min.js"
+      src="https://cdn.jsdelivr.net/npm/@frameright/image-display-control-metadata-parser@1.2.0/dist/image-display-control-metadata-parser-standalone.min.js"
     ></script>
 
     <script type="text/javascript">
