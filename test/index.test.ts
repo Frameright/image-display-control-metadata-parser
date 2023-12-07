@@ -2,7 +2,7 @@ import { Parser } from '../src';
 import { promises as fs } from 'fs';
 
 describe('Parser', () => {
-  it('can get all IDC metadata', async () => {
+  it('can get all IPTC region metadata', async () => {
     const buffer = await fs.readFile(
       'test/fixtures/thirdparty/IPTC-PhotometadataRef-Std2021.1.jpg'
     );
@@ -82,6 +82,58 @@ describe('Parser', () => {
             y: 0.863,
           },
         ],
+      },
+    ]);
+  });
+
+  it('can get all IDC metadata, including Frameright region definition data if it exists', async () => {
+    const buffer = await fs.readFile('test/fixtures/thirdparty/skater.jpg');
+    const parser = new Parser(buffer);
+    expect(parser.getIdcMetadata('any', 'any', false)).toEqual([
+      {
+        id: 'crop-e5cb8e64-b304-45fa-b56f-11fad65dac2b',
+        shape: 'rectangle',
+        roles: ['http://cv.iptc.org/newscodes/imageregionrole/cropping'],
+        unit: 'relative',
+        names: [],
+        imageWidth: 1500,
+        imageHeight: 1000,
+        x: 0.414,
+        y: 0.273,
+        width: 0.156,
+        height: 0.234,
+        idcRegionDefinitionId: 'crop-4875596e-49ca-3ba4-5965-6ba0850738ac',
+        idcRegionDefinitionName: '1:1 Square (Common sizes)',
+      },
+      {
+        id: 'crop-e93caf0a-227b-44c4-a7e6-d9b949f76163',
+        shape: 'rectangle',
+        roles: ['http://cv.iptc.org/newscodes/imageregionrole/cropping'],
+        unit: 'relative',
+        names: [],
+        imageWidth: 1500,
+        imageHeight: 1000,
+        x: 0.416,
+        y: 0.232,
+        width: 0.584,
+        height: 0.329,
+        idcRegionDefinitionId: 'crop-b4fd5a85-6671-a9b2-198e-e5276511c32d',
+        idcRegionDefinitionName: 'Horizontal banner',
+      },
+      {
+        id: 'crop-e7c9cd32-8c28-4a4a-8be9-b6de3bded589',
+        shape: 'rectangle',
+        roles: ['http://cv.iptc.org/newscodes/imageregionrole/cropping'],
+        unit: 'relative',
+        names: [],
+        imageWidth: 1500,
+        imageHeight: 1000,
+        x: 0.4066666666666667,
+        y: 0.199,
+        width: 0.2,
+        height: 0.801,
+        idcRegionDefinitionId: 'crop-0e4dc159-07e2-2662-9269-16a3c9b97787',
+        idcRegionDefinitionName: 'Tall portrait',
       },
     ]);
   });
@@ -169,6 +221,8 @@ describe('Parser', () => {
         y: 0.273,
         width: 0.156,
         height: 0.234,
+        idcRegionDefinitionId: 'crop-4875596e-49ca-3ba4-5965-6ba0850738ac',
+        idcRegionDefinitionName: '1:1 Square (Common sizes)',
       },
       {
         id: 'crop-e93caf0a-227b-44c4-a7e6-d9b949f76163',
@@ -182,6 +236,8 @@ describe('Parser', () => {
         y: 0.232,
         width: 0.584,
         height: 0.329,
+        idcRegionDefinitionId: 'crop-b4fd5a85-6671-a9b2-198e-e5276511c32d',
+        idcRegionDefinitionName: 'Horizontal banner',
       },
       {
         id: 'crop-e7c9cd32-8c28-4a4a-8be9-b6de3bded589',
@@ -195,6 +251,8 @@ describe('Parser', () => {
         y: 0.199,
         width: 0.2,
         height: 0.801,
+        idcRegionDefinitionId: 'crop-0e4dc159-07e2-2662-9269-16a3c9b97787',
+        idcRegionDefinitionName: 'Tall portrait',
       },
     ]);
   });
