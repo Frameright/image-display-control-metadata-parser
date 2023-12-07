@@ -302,10 +302,27 @@ export class Parser {
       }
     }
 
+    if ('RegionDefinitionId' in region) {
+      const idcRegionDefinitionId = (
+        region['RegionDefinitionId'] as ExifReader.XmpTag
+      ).value;
+      if (typeof idcRegionDefinitionId === 'string') {
+        result.idcRegionDefinitionId = idcRegionDefinitionId;
+      }
+    }
+
+    if ('RegionName' in region) {
+      const idcRegionDefinitionName = (
+        region['RegionName'] as ExifReader.XmpTag
+      ).value;
+      if (typeof idcRegionDefinitionName === 'string') {
+        result.idcRegionDefinitionName = idcRegionDefinitionName;
+      }
+    }
+
     const size = this.getSize();
     result.imageWidth = size.width;
     result.imageHeight = size.height;
-
     return result;
   }
 
