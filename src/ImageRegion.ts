@@ -114,6 +114,16 @@ export class ImageRegion {
   public vertices?: Vertex[];
 
   /**
+   * Identifier for the region definition.
+   */
+  public idcRegionDefinitionId?: string;
+
+  /**
+   * Name for the region definition.
+   */
+  public idcRegionDefinitionName?: string;
+
+  /**
    * See https://cv.iptc.org/newscodes/imageregionrole/
    */
   private static readonly _CROP_XML_ROLES = [
