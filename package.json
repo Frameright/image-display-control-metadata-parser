@@ -72,7 +72,7 @@
   },
   "dependencies": {
     "buffer": "^6.0.3",
-    "exifreader": "^4.12.0",
+    "exifreader": "4.19.1",
     "image-size": "1.0.2"
   },
   "_FIXME": "most overrides are caused by tsdx not being maintained anymore. See https://github.com/Frameright/image-display-control-metadata-parser/issues/5",

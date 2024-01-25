@@ -21,6 +21,10 @@ updates:
       # https://github.com/Frameright/image-display-control-metadata-parser/issues/3
       - dependency-name: 'image-size'
 
+      # exifreader@4.20.0 seems to have introduced a regression: with it we
+      # can't read XMP metadata out of a PNG file.
+      - dependency-name: 'exifreader'
+
     # Do not get one pull request per version bump. Instead get one pull request
     # bumping several dependency versions at once:
     groups:
