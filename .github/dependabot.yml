@@ -10,17 +10,6 @@ updates:
     commit-message:
       prefix: 'chore: '
     ignore:
-      # We're stuck on rollup 3 until
-      # https://github.com/FredKSchott/rollup-plugin-polyfill-node/pull/77 lands
-      - dependency-name: 'rollup'
-        update-types: ['version-update:semver-major']
-
-      # There seems to be a breaking change introduced between image-size 1.0.2
-      # and 1.1.1. And any way we'll have to rework the way we consume this
-      # library. See
-      # https://github.com/Frameright/image-display-control-metadata-parser/issues/3
-      - dependency-name: 'image-size'
-
       # exifreader@4.20.0 seems to have introduced a regression: with it we
       # can't read XMP metadata out of a PNG file.
       - dependency-name: 'exifreader'

@@ -15,7 +15,7 @@
     "frameright",
     "image-publishing"
   ],
-  "version": "1.2.0",
+  "version": "2.0.0",
   "license": "MIT",
   "repository": "https://github.com/Frameright/image-display-control-metadata-parser",
   "author": {
@@ -61,8 +61,7 @@
     "husky": "^9.0.6",
     "markdown-toc": "^1.2.0",
     "prettier": "^3.0.0",
-    "rollup": "^3.20.7",
-    "rollup-plugin-polyfill-node": "^0.13.0",
+    "rollup": "^4.16.2",
     "rollup-plugin-summary": "^2.0.0",
     "tsdx": "^0.14.1",
     "tslib": "^2.5.0",
@@ -71,14 +70,21 @@
     "typescript": "^5.0.4"
   },
   "dependencies": {
-    "buffer": "^6.0.3",
     "exifreader": "4.19.1",
-    "image-size": "1.0.2"
+    "image-size": "2.0.0-beta.2"
   },
-  "_FIXME": "most overrides are caused by tsdx not being maintained anymore. See https://github.com/Frameright/image-display-control-metadata-parser/issues/5",
   "overrides": {
-    "eslint": "^8.46.0",
-    "eslint-config-react-app": "^7.0.1",
-    "eslint-plugin-prettier": "^5.0.0"
+    "rollup-plugin-summary": {
+      "rollup": "^4.16.2"
+    },
+    "tsdx": {
+      "eslint": "^8.46.0",
+      "eslint-config-react-app": "^7.0.1",
+      "eslint-plugin-prettier": "^5.0.0",
+      "jest": "^29.7.0",
+      "jest-environment-jsdom": "^29.7.0",
+      "jsdom": "^24.0.0",
+      "ts-jest": "^29.1.2"
+    }
   }
 }

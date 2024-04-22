@@ -140,7 +140,7 @@ For testing purposes, you can use this library directly in the browser:
   <body onload="documentLoaded()">
     <script
       type="module"
-      src="https://cdn.jsdelivr.net/npm/@frameright/image-display-control-metadata-parser@1.2.0/dist/image-display-control-metadata-parser-standalone.min.js"
+      src="https://cdn.jsdelivr.net/npm/@frameright/image-display-control-metadata-parser@2.0.0/dist/image-display-control-metadata-parser-standalone.min.js"
     ></script>
 
     <script type="text/javascript">
@@ -148,8 +148,7 @@ For testing purposes, you can use this library directly in the browser:
         const image = await fetch(
           'https://iptc.org/std/photometadata/examples/IPTC-PhotometadataRef-Std2021.1.jpg'
         );
-        const arrayBuffer = await image.arrayBuffer();
-        const buffer = Buffer.Buffer.from(arrayBuffer);
+        const buffer = await image.arrayBuffer();
         const parser = new ImageDisplayControl.Parser(buffer);
         const regions = parser.getIdcMetadata();
         console.log(JSON.stringify(regions, null, 2 /*indent*/));

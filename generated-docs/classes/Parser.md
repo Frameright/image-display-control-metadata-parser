@@ -28,7 +28,7 @@ https://iptc.org/std/photometadata/specification/IPTC-PhotoMetadata#image-region
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `buffer` | `Buffer` | The image file content. |
+| `buffer` | `Buffer` \| `ArrayBuffer` | The image file content. |
 
 #### Returns
 

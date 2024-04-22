@@ -1,5 +1,5 @@
 import ExifReader from 'exifreader';
-import sizeOf from 'image-size';
+import { imageSize } from 'image-size';
 import { ImageRegion, RoleFilter, ShapeFilter, Vertex } from './ImageRegion';
 export { ImageRegion, RoleFilter, ShapeFilter, Vertex };
 
@@ -27,7 +27,7 @@ export class Parser {
   /**
    * @param buffer The image file content.
    */
-  constructor(buffer: Buffer) {
+  constructor(buffer: Buffer | ArrayBuffer) {
     this._buffer = buffer;
     try {
       const metadata = ExifReader.load(this._buffer, { expanded: true });
@@ -119,7 +119,8 @@ export class Parser {
       return this._size;
     }
 
-    const size = sizeOf(this._buffer);
+    const array = new Uint8Array(this._buffer);
+    const size = imageSize(array);
     this._size = {
       width: size.width || 0,
       height: size.height || 0,
@@ -326,7 +327,7 @@ export class Parser {
     return result;
   }
 
-  private _buffer: Buffer;
+  private _buffer: Buffer | ArrayBuffer;
   private _xmpMetadata: ExifReader.XmpTags;
   private _size: Size | null = null;
 }

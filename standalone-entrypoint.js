@@ -3,7 +3,5 @@
 // CDN and used in a browser.
 
 import * as ImageDisplayControl from './dist/image-display-control-metadata-parser.esm.js';
-import * as Buffer from 'buffer';
 
 window.ImageDisplayControl = ImageDisplayControl;
-window.Buffer = Buffer;
