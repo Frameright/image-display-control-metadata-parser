@@ -1,0 +1,21 @@
+<!-- LA_TEMP -->
+<html>
+  <body onload="documentLoaded()">
+    <script
+      type="module"
+      src="dist/image-display-control-metadata-parser-standalone.min.js"
+    ></script>
+
+    <script type="text/javascript">
+      async function documentLoaded() {
+        const image = await fetch(
+          'https://iptc.org/std/photometadata/examples/IPTC-PhotometadataRef-Std2021.1.jpg'
+        );
+        const buffer = await image.arrayBuffer();
+        const parser = new ImageDisplayControl.Parser(buffer);
+        const regions = parser.getIdcMetadata();
+        console.log(JSON.stringify(regions, null, 2 /*indent*/));
+      }
+    </script>
+  </body>
+</html>
