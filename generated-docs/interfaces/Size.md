@@ -1,36 +1,39 @@
+[**@frameright/image-display-control-metadata-parser**](../README.md) • **Docs**
+
+***
+
 [@frameright/image-display-control-metadata-parser](../README.md) / Size
 
 # Interface: Size
 
 Size of an image in pixels.
 
-## Table of contents
+## Contents
 
-### Properties
-
-- [width](Size.md#width)
-- [height](Size.md#height)
+* [Properties](#properties)
+  * [width](#width)
+  * [height](#height)
 
 ## Properties
 
 ### width
 
-• **width**: `number`
+> **width**: `number`
 
 Image width in pixels.
 
-#### Defined in
+#### Source
 
 [index.ts:13](https://github.com/Frameright/image-display-control-metadata-parser/blob/main/src/index.ts#L13)
 
-___
+***
 
 ### height
 
-• **height**: `number`
+> **height**: `number`
 
 Image height in pixels.
 
-#### Defined in
+#### Source
 
 [index.ts:18](https://github.com/Frameright/image-display-control-metadata-parser/blob/main/src/index.ts#L18)

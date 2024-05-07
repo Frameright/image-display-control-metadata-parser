@@ -1,242 +1,242 @@
+[**@frameright/image-display-control-metadata-parser**](../README.md) • **Docs**
+
+***
+
 [@frameright/image-display-control-metadata-parser](../README.md) / ImageRegion
 
 # Class: ImageRegion
 
-## Table of contents
+## Contents
 
-### Properties
-
-- [id](ImageRegion.md#id)
-- [names](ImageRegion.md#names)
-- [shape](ImageRegion.md#shape)
-- [types](ImageRegion.md#types)
-- [roles](ImageRegion.md#roles)
-- [unit](ImageRegion.md#unit)
-- [imageWidth](ImageRegion.md#imagewidth)
-- [imageHeight](ImageRegion.md#imageheight)
-- [x](ImageRegion.md#x)
-- [y](ImageRegion.md#y)
-- [width](ImageRegion.md#width)
-- [height](ImageRegion.md#height)
-- [radius](ImageRegion.md#radius)
-- [vertices](ImageRegion.md#vertices)
-- [idcRegionDefinitionId](ImageRegion.md#idcregiondefinitionid)
-- [idcRegionDefinitionName](ImageRegion.md#idcregiondefinitionname)
-
-### Methods
-
-- [matches](ImageRegion.md#matches)
+* [Properties](#properties)
+  * [id](#id)
+  * [names](#names)
+  * [shape](#shape)
+  * [types?](#types)
+  * [roles?](#roles)
+  * [unit](#unit)
+  * [imageWidth?](#imagewidth)
+  * [imageHeight?](#imageheight)
+  * [x?](#x)
+  * [y?](#y)
+  * [width?](#width)
+  * [height?](#height)
+  * [radius?](#radius)
+  * [vertices?](#vertices)
+  * [idcRegionDefinitionId?](#idcregiondefinitionid)
+  * [idcRegionDefinitionName?](#idcregiondefinitionname)
+* [Methods](#methods)
+  * [matches()](#matches)
 
 ## Properties
 
 ### id
 
-• **id**: `string` = `''`
+> **id**: `string` = `''`
 
 Identifier for the region. Unique within the image.
 
-#### Defined in
+#### Source
 
 [ImageRegion.ts:43](https://github.com/Frameright/image-display-control-metadata-parser/blob/main/src/ImageRegion.ts#L43)
 
-___
+***
 
 ### names
 
-• **names**: `string`[] = `[]`
+> **names**: `string`\[] = `[]`
 
 Names for the region, possibly in multiple languages.
 
-#### Defined in
+#### Source
 
 [ImageRegion.ts:48](https://github.com/Frameright/image-display-control-metadata-parser/blob/main/src/ImageRegion.ts#L48)
 
-___
+***
 
 ### shape
 
-• **shape**: `string` = `''`
+> **shape**: `string` = `''`
 
 Region shape, can be `rectangle`, `circle` or `polygon`.
 
-#### Defined in
+#### Source
 
 [ImageRegion.ts:53](https://github.com/Frameright/image-display-control-metadata-parser/blob/main/src/ImageRegion.ts#L53)
 
-___
+***
 
-### types
+### types?
 
-• `Optional` **types**: `string`[]
+> `optional` **types**: `string`\[]
 
-Region types, see https://cv.iptc.org/newscodes/imageregiontype/
+Region types, see <https://cv.iptc.org/newscodes/imageregiontype/>
 
-#### Defined in
+#### Source
 
 [ImageRegion.ts:58](https://github.com/Frameright/image-display-control-metadata-parser/blob/main/src/ImageRegion.ts#L58)
 
-___
+***
 
-### roles
+### roles?
 
-• `Optional` **roles**: `string`[]
+> `optional` **roles**: `string`\[]
 
-Region roles, see https://cv.iptc.org/newscodes/imageregionrole/
+Region roles, see <https://cv.iptc.org/newscodes/imageregionrole/>
 
-#### Defined in
+#### Source
 
 [ImageRegion.ts:63](https://github.com/Frameright/image-display-control-metadata-parser/blob/main/src/ImageRegion.ts#L63)
 
-___
+***
 
 ### unit
 
-• **unit**: `string` = `''`
+> **unit**: `string` = `''`
 
 Unit used for `x`, `y`, `width`, `height`, `radius` and `vertices`. Can be
 `relative` or `pixel`, see
-https://iptc.org/std/photometadata/specification/IPTC-PhotoMetadata#boundary-measuring-unit
+<https://iptc.org/std/photometadata/specification/IPTC-PhotoMetadata#boundary-measuring-unit>
 
-#### Defined in
+#### Source
 
 [ImageRegion.ts:70](https://github.com/Frameright/image-display-control-metadata-parser/blob/main/src/ImageRegion.ts#L70)
 
-___
+***
 
-### imageWidth
+### imageWidth?
 
-• `Optional` **imageWidth**: `number`
+> `optional` **imageWidth**: `number`
 
 Original/full image width. Reference width to be used as a base for `x`,
 `width`, `radius` and `vertices/x` when `unit` is `pixel`. See
-https://docs.frameright.io/web-component/attribute-ref
+<https://docs.frameright.io/web-component/attribute-ref>
 
-#### Defined in
+#### Source
 
 [ImageRegion.ts:77](https://github.com/Frameright/image-display-control-metadata-parser/blob/main/src/ImageRegion.ts#L77)
 
-___
+***
 
-### imageHeight
+### imageHeight?
 
-• `Optional` **imageHeight**: `number`
+> `optional` **imageHeight**: `number`
 
 Original/full image width. Reference width to be used as a base for `y`,
 `height` and `vertices/y` when `unit` is `pixel`. See
-https://docs.frameright.io/web-component/attribute-ref
+<https://docs.frameright.io/web-component/attribute-ref>
 
-#### Defined in
+#### Source
 
 [ImageRegion.ts:84](https://github.com/Frameright/image-display-control-metadata-parser/blob/main/src/ImageRegion.ts#L84)
 
-___
+***
 
-### x
+### x?
 
-• `Optional` **x**: `number`
+> `optional` **x**: `number`
 
 Coordinates of a `rectangle` or `circle` region.
 
-#### Defined in
+#### Source
 
 [ImageRegion.ts:89](https://github.com/Frameright/image-display-control-metadata-parser/blob/main/src/ImageRegion.ts#L89)
 
-___
+***
 
-### y
+### y?
 
-• `Optional` **y**: `number`
+> `optional` **y**: `number`
 
 Coordinates of a `rectangle` or `circle` region.
 
-#### Defined in
+#### Source
 
 [ImageRegion.ts:94](https://github.com/Frameright/image-display-control-metadata-parser/blob/main/src/ImageRegion.ts#L94)
 
-___
+***
 
-### width
+### width?
 
-• `Optional` **width**: `number`
+> `optional` **width**: `number`
 
 Width of a `rectangle` region.
 
-#### Defined in
+#### Source
 
 [ImageRegion.ts:99](https://github.com/Frameright/image-display-control-metadata-parser/blob/main/src/ImageRegion.ts#L99)
 
-___
+***
 
-### height
+### height?
 
-• `Optional` **height**: `number`
+> `optional` **height**: `number`
 
 Height of a `rectangle` region.
 
-#### Defined in
+#### Source
 
 [ImageRegion.ts:104](https://github.com/Frameright/image-display-control-metadata-parser/blob/main/src/ImageRegion.ts#L104)
 
-___
+***
 
-### radius
+### radius?
 
-• `Optional` **radius**: `number`
+> `optional` **radius**: `number`
 
 Radius of a `circle` region.
 
-#### Defined in
+#### Source
 
 [ImageRegion.ts:109](https://github.com/Frameright/image-display-control-metadata-parser/blob/main/src/ImageRegion.ts#L109)
 
-___
+***
 
-### vertices
+### vertices?
 
-• `Optional` **vertices**: [`Vertex`](../interfaces/Vertex.md)[]
+> `optional` **vertices**: [`Vertex`](../interfaces/Vertex.md)\[]
 
 Vertices/corners of a `polygon` region.
 
-#### Defined in
+#### Source
 
 [ImageRegion.ts:114](https://github.com/Frameright/image-display-control-metadata-parser/blob/main/src/ImageRegion.ts#L114)
 
-___
+***
 
-### idcRegionDefinitionId
+### idcRegionDefinitionId?
 
-• `Optional` **idcRegionDefinitionId**: `string`
+> `optional` **idcRegionDefinitionId**: `string`
 
 Identifier for the region definition.
 
-#### Defined in
+#### Source
 
 [ImageRegion.ts:119](https://github.com/Frameright/image-display-control-metadata-parser/blob/main/src/ImageRegion.ts#L119)
 
-___
+***
 
-### idcRegionDefinitionName
+### idcRegionDefinitionName?
 
-• `Optional` **idcRegionDefinitionName**: `string`
+> `optional` **idcRegionDefinitionName**: `string`
 
 Name for the region definition.
 
-#### Defined in
+#### Source
 
 [ImageRegion.ts:124](https://github.com/Frameright/image-display-control-metadata-parser/blob/main/src/ImageRegion.ts#L124)
 
 ## Methods
 
-### matches
+### matches()
 
-▸ **matches**(`shapeFilter`, `roleFilter`): `boolean`
+> **matches**(`shapeFilter`, `roleFilter`): `boolean`
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `shapeFilter` | [`ShapeFilter`](../README.md#shapefilter) |
-| `roleFilter` | [`RoleFilter`](../README.md#rolefilter) |
+• **shapeFilter**: [`ShapeFilter`](../type-aliases/ShapeFilter.md)
+
+• **roleFilter**: [`RoleFilter`](../type-aliases/RoleFilter.md)
 
 #### Returns
 
@@ -244,6 +244,6 @@ Name for the region definition.
 
 `true` if the region matches the given shape and role filters.
 
-#### Defined in
+#### Source
 
 [ImageRegion.ts:33](https://github.com/Frameright/image-display-control-metadata-parser/blob/main/src/ImageRegion.ts#L33)

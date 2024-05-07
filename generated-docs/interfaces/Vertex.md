@@ -1,36 +1,39 @@
+[**@frameright/image-display-control-metadata-parser**](../README.md) • **Docs**
+
+***
+
 [@frameright/image-display-control-metadata-parser](../README.md) / Vertex
 
 # Interface: Vertex
 
 Vertex/corner of a `polygon` region.
 
-## Table of contents
+## Contents
 
-### Properties
-
-- [x](Vertex.md#x)
-- [y](Vertex.md#y)
+* [Properties](#properties)
+  * [x](#x)
+  * [y](#y)
 
 ## Properties
 
 ### x
 
-• **x**: `number`
+> **x**: `number`
 
 Coordinates of the vertex.
 
-#### Defined in
+#### Source
 
 [ImageRegion.ts:8](https://github.com/Frameright/image-display-control-metadata-parser/blob/main/src/ImageRegion.ts#L8)
 
-___
+***
 
 ### y
 
-• **y**: `number`
+> **y**: `number`
 
 Coordinates of the vertex.
 
-#### Defined in
+#### Source
 
 [ImageRegion.ts:13](https://github.com/Frameright/image-display-control-metadata-parser/blob/main/src/ImageRegion.ts#L13)
