@@ -1,5 +1,8 @@
 {
-  "plugin": ["typedoc-plugin-markdown"],
+  "plugin": ["typedoc-plugin-markdown", "typedoc-plugin-remark"],
+  "remarkPlugins": [
+    ["remark-toc", { "maxDepth": 3 }],
+  ],
   "entryPoints": ["./src/index.ts"],
   "out": "generated-docs/",
   "readme": "none",

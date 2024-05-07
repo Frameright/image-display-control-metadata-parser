@@ -8,7 +8,16 @@
 
 Parses the XMP metadata of an image, relevant for Image Display Control, i.e.
 mostly the image regions, see
-https://iptc.org/std/photometadata/specification/IPTC-PhotoMetadata#image-region
+<https://iptc.org/std/photometadata/specification/IPTC-PhotoMetadata#image-region>
+
+## Contents
+
+* [Constructors](#constructors)
+  * [new Parser()](#new-parser)
+* [Methods](#methods)
+  * [getIdcMetadata()](#getidcmetadata)
+  * [getXmpMetadata()](#getxmpmetadata)
+  * [getSize()](#getsize)
 
 ## Constructors
 
@@ -18,7 +27,7 @@ https://iptc.org/std/photometadata/specification/IPTC-PhotoMetadata#image-region
 
 #### Parameters
 
-• **buffer**: `Buffer` \| `ArrayBuffer`
+• **buffer**: `Buffer` | `ArrayBuffer`
 
 The image file content.
 
@@ -34,32 +43,32 @@ The image file content.
 
 ### getIdcMetadata()
 
-> **getIdcMetadata**(`shapeFilter`, `roleFilter`, `essentialOnly`): [`ImageRegion`](ImageRegion.md)[]
+> **getIdcMetadata**(`shapeFilter`, `roleFilter`, `essentialOnly`): [`ImageRegion`](ImageRegion.md)\[]
 
 Returns XMP IDC metadata in a format similar to what this web-component
-expects: https://github.com/Frameright/image-display-control-web-component
+expects: <https://github.com/Frameright/image-display-control-web-component>
 
 #### Parameters
 
 • **shapeFilter**: [`ShapeFilter`](../type-aliases/ShapeFilter.md)= `'any'`
 
 Can be used to retrieve only regions of a specific
-                   shape, e.g. 'rectangle'.
+shape, e.g. 'rectangle'.
 
 • **roleFilter**: [`RoleFilter`](../type-aliases/RoleFilter.md)= `'any'`
 
 Can be used to retrieve only regions of a specific kind
-                  of role, e.g. 'crop'.
+of role, e.g. 'crop'.
 
 • **essentialOnly**: `boolean`= `true`
 
 If true, only essential region properties will be
-                     returned, e.g. properties like `types` and `roles`
-                     will be skipped.
+returned, e.g. properties like `types` and `roles`
+will be skipped.
 
 #### Returns
 
-[`ImageRegion`](ImageRegion.md)[]
+[`ImageRegion`](ImageRegion.md)\[]
 
 #### Source
 
@@ -78,7 +87,7 @@ Dumps all XMP metadata.
 `XmpTags`
 
 An instance of
-        [ExifReader.XmpTags](https://github.com/mattiasw/ExifReader/blob/main/exif-reader.d.ts#L121)
+[ExifReader.XmpTags](https://github.com/mattiasw/ExifReader/blob/main/exif-reader.d.ts#L121)
 
 #### Source
 

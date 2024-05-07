@@ -8,6 +8,12 @@
 
 Vertex/corner of a `polygon` region.
 
+## Contents
+
+* [Properties](#properties)
+  * [x](#x)
+  * [y](#y)
+
 ## Properties
 
 ### x

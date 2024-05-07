@@ -6,7 +6,7 @@
 
 # Type alias: ShapeFilter
 
-> **ShapeFilter**: `"any"` \| `"rectangle"` \| `"circle"` \| `"polygon"`
+> **ShapeFilter**: `"any"` | `"rectangle"` | `"circle"` | `"polygon"`
 
 Filter for image regions. If `any`, all regions will be returned. Otherwise
 only regions of the given shape will be returned.

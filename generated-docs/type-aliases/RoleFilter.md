@@ -6,11 +6,11 @@
 
 # Type alias: RoleFilter
 
-> **RoleFilter**: `"any"` \| `"crop"`
+> **RoleFilter**: `"any"` | `"crop"`
 
 Filter for image regions. If `any`, all regions will be returned. Otherwise
 if `crop`, only regions with one of the cropping-related roles described
-at https://cv.iptc.org/newscodes/imageregionrole/ will be returned.
+at <https://cv.iptc.org/newscodes/imageregionrole/> will be returned.
 
 ## Source
 

@@ -6,6 +6,28 @@
 
 # Class: ImageRegion
 
+## Contents
+
+* [Properties](#properties)
+  * [id](#id)
+  * [names](#names)
+  * [shape](#shape)
+  * [types?](#types)
+  * [roles?](#roles)
+  * [unit](#unit)
+  * [imageWidth?](#imagewidth)
+  * [imageHeight?](#imageheight)
+  * [x?](#x)
+  * [y?](#y)
+  * [width?](#width)
+  * [height?](#height)
+  * [radius?](#radius)
+  * [vertices?](#vertices)
+  * [idcRegionDefinitionId?](#idcregiondefinitionid)
+  * [idcRegionDefinitionName?](#idcregiondefinitionname)
+* [Methods](#methods)
+  * [matches()](#matches)
+
 ## Properties
 
 ### id
@@ -22,7 +44,7 @@ Identifier for the region. Unique within the image.
 
 ### names
 
-> **names**: `string`[] = `[]`
+> **names**: `string`\[] = `[]`
 
 Names for the region, possibly in multiple languages.
 
@@ -46,9 +68,9 @@ Region shape, can be `rectangle`, `circle` or `polygon`.
 
 ### types?
 
-> `optional` **types**: `string`[]
+> `optional` **types**: `string`\[]
 
-Region types, see https://cv.iptc.org/newscodes/imageregiontype/
+Region types, see <https://cv.iptc.org/newscodes/imageregiontype/>
 
 #### Source
 
@@ -58,9 +80,9 @@ Region types, see https://cv.iptc.org/newscodes/imageregiontype/
 
 ### roles?
 
-> `optional` **roles**: `string`[]
+> `optional` **roles**: `string`\[]
 
-Region roles, see https://cv.iptc.org/newscodes/imageregionrole/
+Region roles, see <https://cv.iptc.org/newscodes/imageregionrole/>
 
 #### Source
 
@@ -74,7 +96,7 @@ Region roles, see https://cv.iptc.org/newscodes/imageregionrole/
 
 Unit used for `x`, `y`, `width`, `height`, `radius` and `vertices`. Can be
 `relative` or `pixel`, see
-https://iptc.org/std/photometadata/specification/IPTC-PhotoMetadata#boundary-measuring-unit
+<https://iptc.org/std/photometadata/specification/IPTC-PhotoMetadata#boundary-measuring-unit>
 
 #### Source
 
@@ -88,7 +110,7 @@ https://iptc.org/std/photometadata/specification/IPTC-PhotoMetadata#boundary-mea
 
 Original/full image width. Reference width to be used as a base for `x`,
 `width`, `radius` and `vertices/x` when `unit` is `pixel`. See
-https://docs.frameright.io/web-component/attribute-ref
+<https://docs.frameright.io/web-component/attribute-ref>
 
 #### Source
 
@@ -102,7 +124,7 @@ https://docs.frameright.io/web-component/attribute-ref
 
 Original/full image width. Reference width to be used as a base for `y`,
 `height` and `vertices/y` when `unit` is `pixel`. See
-https://docs.frameright.io/web-component/attribute-ref
+<https://docs.frameright.io/web-component/attribute-ref>
 
 #### Source
 
@@ -172,7 +194,7 @@ Radius of a `circle` region.
 
 ### vertices?
 
-> `optional` **vertices**: [`Vertex`](../interfaces/Vertex.md)[]
+> `optional` **vertices**: [`Vertex`](../interfaces/Vertex.md)\[]
 
 Vertices/corners of a `polygon` region.
 

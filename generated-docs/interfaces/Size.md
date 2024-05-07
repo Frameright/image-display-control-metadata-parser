@@ -8,6 +8,12 @@
 
 Size of an image in pixels.
 
+## Contents
+
+* [Properties](#properties)
+  * [width](#width)
+  * [height](#height)
+
 ## Properties
 
 ### width
