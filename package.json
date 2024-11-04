@@ -63,7 +63,7 @@
     "prettier": "^3.0.0",
     "remark-toc": "^9.0.0",
     "rollup": "^4.16.2",
-    "rollup-plugin-summary": "^2.0.0",
+    "rollup-plugin-summary": "^3.0.0",
     "tsdx": "^0.14.1",
     "tslib": "^2.5.0",
     "typedoc": "^0.26.3",
