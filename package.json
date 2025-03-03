@@ -73,7 +73,7 @@
   },
   "dependencies": {
     "exifreader": "4.19.1",
-    "image-size": "2.0.0-beta.4"
+    "image-size": "2.0.0"
   },
   "overrides": {
     "rollup-plugin-summary": {
