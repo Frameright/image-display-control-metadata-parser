@@ -66,14 +66,14 @@
     "rollup-plugin-summary": "^3.0.0",
     "tsdx": "^0.14.1",
     "tslib": "^2.5.0",
-    "typedoc": "^0.27.2",
+    "typedoc": "^0.28.0",
     "typedoc-plugin-markdown": "^4.0.0",
     "typedoc-plugin-remark": "^1.0.0",
     "typescript": "^5.0.4"
   },
   "dependencies": {
     "exifreader": "4.19.1",
-    "image-size": "2.0.0-beta.4"
+    "image-size": "2.0.1"
   },
   "overrides": {
     "rollup-plugin-summary": {
